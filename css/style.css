@@ -1,0 +1,43 @@
+body{
+	margin: 0;
+}
+main{
+	width: 100%;
+	height: 100%;
+}
+div{
+	outline: 1px solid;
+}
+.navMain{
+	position: fixed;
+	right: 10px;
+	min-width: min-content;
+	width: 15%;
+	min-height: min-content;
+	height: 25%;
+}
+.navSearch{
+	height: 0;
+	position: fixed;
+	width: 100%;
+}
+.searchInput{
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	width: 20%;
+	min-width: min-content;
+}
+.container{
+	height: 6000px;
+	margin: auto;
+	width: 60%;
+}
+.account{
+  display: flex;
+  justify-content: center;
+}
+.account > button{
+	width: 45%;
+	margin: 5%;
+}
