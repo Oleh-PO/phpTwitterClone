@@ -1,10 +1,10 @@
-<div class="navSearch">
+<div class="navSearch"> <!--search bar -->
 	<div class="searchInput">
 		<label name="search">🔍</label>
 		<input name="search" type="text">
 	</div>
 </div>
-<div class="navMain">
+<div class="navMain"> <!-- menu -->
 	<div class="account">
 		<button>LOGIN</button>
 		<button>SINGUP</button>

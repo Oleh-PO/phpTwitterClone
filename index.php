@@ -8,7 +8,7 @@
 </head>
 <body>
 	<nav>
-		<?php require 'html/nav.php'; ?>
+		<?php require 'html/nav.php'; ?> <!-- adding nav bar -->
 	</nav>
 	<main>
 		<div class="container">
