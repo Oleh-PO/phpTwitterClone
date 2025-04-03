@@ -6,8 +6,8 @@
 </div>
 <div class="navMain"> <!-- menu -->
 	<div class="account">
-		<button>LOGIN</button>
-		<button>SINGUP</button>
+		<a href="html/login/singup.php">SINGUP</a>
+		<a href="html/login/login.php">LOGIN</a>
 	</div>
 	<div class="discover">
 		<ul>
