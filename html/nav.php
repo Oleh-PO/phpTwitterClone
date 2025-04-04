@@ -1,3 +1,6 @@
+<?php 
+	session_start();
+ ?>
 <div class="navSearch"> <!--search bar -->
 	<div class="searchInput">
 		<label name="search">🔍</label>
@@ -6,8 +9,12 @@
 </div>
 <div class="navMain"> <!-- menu -->
 	<div class="account">
-		<a href="html/login/singup.php">SINGUP</a>
-		<a href="html/login/login.php">LOGIN</a>
+		<?php if (isset($_SESSION["id"])): ?>
+			<a href="html/login/logout.php">LOGOUT</a>
+		<?php else: ?>
+			<a href="html/login/singup.php">SINGUP</a>
+			<a href="html/login/login.php">LOGIN</a>
+		<?php endif; ?>
 	</div>
 	<div class="discover">
 		<ul>

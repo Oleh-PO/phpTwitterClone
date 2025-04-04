@@ -2,7 +2,7 @@
 	$servername = "mySQL-8.2";
 	$username   = "root";
 	$password   = "";
-	$dbname     = "test";
+	$dbname     = "phpmytwitter";
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 	if (!$conn) {
 	  die("Connection failed: " . mysqli_connect_error());

@@ -1,5 +1,6 @@
 <?php
 	$conn = require $_SERVER['DOCUMENT_ROOT'] . "\php\sql.php";//connects to mysql via sql.php file
+
 	function validInput($input, $type, ) { //test for uniqueness
 		global $conn;
 		$length = strlen($input);
@@ -13,17 +14,24 @@
 		}
 	}
   if ($_SERVER['REQUEST_METHOD'] === "POST") { //validate form
-  	$conn = require $_SERVER['DOCUMENT_ROOT'] . "\php\sql.php";
 		$login    = $_POST["login"];
 		$email    = $_POST["email"];
 		$password = $_POST["password"];
 		$passcon  = $_POST["passCon"];
 
-		var_dump(validInput($login, "login"));
 		if (validInput($login, "login") && validInput($email, "email")) {//for test, make it better for latter 
-      if (strlen($password) > 8 && strlen($password) < 16) {
-				if ($password === $passcon) {
-					echo "TRUE";
+      if (strlen($password) > 8 && strlen($password) < 16 && $password === $passcon) {
+      	$hash = password_hash($password, PASSWORD_DEFAULT);
+
+				$sql = "
+					INSERT INTO Users (login, email, password)
+					VALUES ('$login', '$email', '$hash');
+				";
+				if (mysqli_query($conn, $sql)) {
+					header("Location: /index.php");
+					exit();
+				} else {
+					var_dump("error");
 				}
 			}	
 		}
@@ -42,7 +50,7 @@
 </head>
 <body>
 	<div class="form">
-		<form method="POST">//POST form
+		<form method="POST"> POST form
 			<input placeholder="login" autocomplete="nickname" type="text" id="login" name="login">
 			<input placeholder="email" autocomplete="email" type="email" id="email" name="email">
 			<input placeholder="password" autocomplete="new-password" type="password" name="password" id="password">
