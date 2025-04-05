@@ -1,0 +1,26 @@
+h2 {
+	display: inline-block;
+}
+.profile {
+	width: 100%;
+	position: absolute;
+	top: 15%;
+	left: 10%;
+}
+.profile h2 {
+	font-size: 45px;
+	margin-left: 20px;
+	line-height: 0;
+}
+.userFlex img {
+	height: 100px;
+	outline: 1px solid black;
+}
+.userFlex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.bio {
+	margin: 5px;
+}

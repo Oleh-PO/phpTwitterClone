@@ -20,7 +20,8 @@
 		$passcon  = $_POST["passCon"];
 
 		if (validInput($login, "login") && validInput($email, "email")) {//for test, make it better for latter 
-      if (strlen($password) > 8 && strlen($password) < 16 && $password === $passcon) {
+			var_dump(true);
+      if (strlen($password) > 7 && strlen($password) < 15 && $password === $passcon) {
       	$hash = password_hash($password, PASSWORD_DEFAULT);
 
 				$sql = "
@@ -31,7 +32,7 @@
 					header("Location: /index.php");
 					exit();
 				} else {
-					var_dump("error");
+					die("error");
 				}
 			}	
 		}
@@ -57,6 +58,8 @@
 			<input placeholder="confirm password" autocomplete="new-password" type="password" name="passCon" id="passCon">
 			<input type="submit">
 		</form>
+		<a href="/index.php">HOME</a>
+		<a href="/html/login/login.php">LOGIN</a>
 	</div>
 </body>
 </html>

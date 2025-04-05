@@ -6,7 +6,7 @@
 		$password = $_POST["password"];
 
 		$sql = "
-			SELECT id, password FROM Users
+			SELECT id, password, login FROM Users
 			WHERE login = '$login' OR email = '$login';
 		";
 		$result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
@@ -14,6 +14,7 @@
 			session_start();
 			var_dump($result["id"]);
 			$_SESSION["id"] = $result["id"];
+			$_SESSION["username"] = $result["login"];
 			header("Location: /index.php");
 			exit();
 		}
@@ -34,9 +35,11 @@
 	<div class="form"> 
 		<form method="POST"> POST form
 			<input placeholder="login or email" autocomplete="username" type="text" id="login" name="login">
-			<input placeholder="password" autocomplete="new-password" type="password" name="password" id="password">
+			<input placeholder="password" autocomplete="current-password" type="password" name="password" id="password">
 			<input type="submit">
 		</form>
+		<a href="/index.php">HOME</a>
+		<a href="/html/login/singup.php">SINGUP</a>
 	</div>
 </body>
 </html>
