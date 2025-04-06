@@ -2,9 +2,8 @@ h2 {
 	display: inline-block;
 }
 .profile {
-	width: 100%;
-	position: absolute;
-	top: 15%;
+	width: 80%;
+	position: relative;
 	left: 10%;
 }
 .profile h2 {

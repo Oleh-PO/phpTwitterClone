@@ -15,7 +15,7 @@
 			var_dump($result["id"]);
 			$_SESSION["id"] = $result["id"];
 			$_SESSION["username"] = $result["login"];
-			header("Location: /index.php");
+			header("Location: /");
 			exit();
 		}
 		mysqli_close($conn);
@@ -38,7 +38,7 @@
 			<input placeholder="password" autocomplete="current-password" type="password" name="password" id="password">
 			<input type="submit">
 		</form>
-		<a href="/index.php">HOME</a>
+		<a href="/">HOME</a>
 		<a href="/html/login/singup.php">SINGUP</a>
 	</div>
 </body>

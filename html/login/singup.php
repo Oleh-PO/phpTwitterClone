@@ -29,7 +29,7 @@
 					VALUES ('$login', '$email', '$hash');
 				";
 				if (mysqli_query($conn, $sql)) {
-					header("Location: /index.php");
+					header("Location: /");
 					exit();
 				} else {
 					die("error");
@@ -58,7 +58,7 @@
 			<input placeholder="confirm password" autocomplete="new-password" type="password" name="passCon" id="passCon">
 			<input type="submit">
 		</form>
-		<a href="/index.php">HOME</a>
+		<a href="/">HOME</a>
 		<a href="/html/login/login.php">LOGIN</a>
 	</div>
 </body>

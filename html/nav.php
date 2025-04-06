@@ -13,7 +13,7 @@
 			<a href="/html/login/singup.php">SINGUP</a>
 			<a href="/html/login/login.php">LOGIN</a>
 		<?php else: ?>
-			<a href=<?php echo "/html/profile.php/?user=" . $_SESSION["id"]?>  class="user">
+			<a href=<?php echo "/?user=" . $_SESSION["id"]?>  class="user">
 				<?php echo $_SESSION["username"]; ?>
 				<img src="https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg">
 			</a>
@@ -21,7 +21,7 @@
 	</div>
 	<div class="discover">
 		<ul>
-			<li><a href="/index.php">HOME</a></li>
+			<li><a href="/">HOME</a></li>
 			<li>FRIANDS</li>
 			<li>SETTINGS</li>
 		</ul>
