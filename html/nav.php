@@ -4,7 +4,7 @@
 <div class="navSearch"> <!--search bar -->
 	<div class="searchInput">
 		<label name="search">🔍</label>
-		<input name="search" type="search">
+		<search><input name="search" type="search"></search>
 	</div>
 </div>
 <div class="navMain"> <!-- menu -->

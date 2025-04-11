@@ -4,24 +4,9 @@
 	if (isset($_SESSION["id"])) {
 		$id    = $_SESSION["id"];
 		$title = $_SESSION["username"];
-
-		if ($_SERVER['REQUEST_METHOD'] === "POST") {
-			$story = $_POST["story"];
-
-			if (strlen($story) > 0) {//creating a post
-				$sql = "
-					INSERT INTO Posts (user_id, content)
-					VALUES ('$id', '$story');
-				";
-
-				mysqli_query($conn, $sql);
-				header('Location: /index.php');
-				exit;
-			}
-		}
 	} else {
 		$id    = 0;
-		$title = "test";
+		$title = "unknown";
 	}
 ?>
 
@@ -33,25 +18,16 @@
 	<title>
 		<?php echo $title; ?>
 	</title>
+	<link rel="stylesheet" type="text/css" href="css/profile.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<?php if (isset($_GET['user'])): ?>
-		<link rel="stylesheet" type="text/css" href="css/profile.css">
-	<?php endif; ?>
-	<script type="text/javascript"> 
-		let count = 1; //delete for letter 
-		const test = function() {
-			let container = document.querySelector(".container");
-			let xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					container.innerHTML += this.responseText;
-					count++;
-				}
-			};
-			xmlhttp.open("GET", "/test.php?q="+count, true);
-			xmlhttp.send();
-		};
-	</script>
+		<script type="text/javascript">
+			let user = false;
+			<?php if (isset($_GET['user'])): ?>
+				user = "user=" + <?php echo $_GET['user'] ?>;
+			<?php endif; ?>
+		</script>
+	<script type="text/javascript" src="js/feed.js"></script>
+	<script type="text/javascript" src="js/fileMeneger.js"></script>
 </head>
 <body>
 	<nav>
@@ -60,15 +36,17 @@
 	<main>
 		<?php if (isset($_GET['user'])){require 'html/profile.php';} ?>
 		<div class="container">
-			<div class="createPost"> <!-- test for post -->
-				<form method="POST">
-					<textarea id="story" name="story" rows="5" cols="33"></textarea>
-					<input type="submit" name="submit">
-				</form>
+			<?php require $_SERVER['DOCUMENT_ROOT'] . "\html\post.php" ?>
+			<button onclick="loadPost()">test</button> <!-- test buttons -->
+			<button onclick="changeOrder()" id="checkbox">order</button>
+			<div class="postContainer"> 
+				<?php if (isset($_GET['post'])) { 
+					//test for GET "post" if true puts additional template
+					require $_SERVER['DOCUMENT_ROOT']."/html/postTemplate.php";
+				} ?>
 			</div>
-			<button onclick="test()">test</button>
-			<?php require 'php/feed.php'; ?> <!-- delete to -->
 		</div>
+		<div class="bottom"></div>
 	</main>
 </body>
 </html>

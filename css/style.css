@@ -39,7 +39,6 @@ a {
 	min-width: min-content;
 }
 .container {
-	height: 6000px;
 	margin: auto;
 	width: 60%;
 }
@@ -63,4 +62,64 @@ a {
 	width: 45%;
 	margin: 5%;
 	padding: 3% 0 3% 0;
+}
+.post {
+	padding: 10px;
+}
+.post h3 {
+  margin: 15px 0 15px 10px;
+  line-height: 0px;
+}
+.post img {
+	height: 40px;
+}
+.postFlex {
+	padding: 7px;
+}
+.post span {
+  display: block;
+  text-align: right;
+  position: relative;
+  right: 20px;
+}
+.bottom {
+	outline: none;
+	position: relative;
+	bottom: 5%;
+}
+.none {
+	display: none;
+}
+.createPost form {
+	display: flex;
+}
+.createPost textarea {
+  resize: none;
+  width: -webkit-fill-available;
+  border: none;
+  outline: 1px solid;
+  margin: 3px;
+}
+.createPost input {
+	margin: 5px;
+}
+.postHeader {
+	display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menuDrop:focus-within div {
+	display: flex;
+  flex-direction: column-reverse;
+  position: absolute;
+  padding-bottom: 30px;
+}
+.menuDrop div {
+  display: none;
+}
+.menuDrop {
+	margin: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
 }
