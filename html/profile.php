@@ -27,10 +27,10 @@
 	</div>
 	<div class="bio">
 		<h4>bio:</h4>
-		<form id="bio" method="POST">
-			<textarea name="bio" class="edit"><?php echo $bio; ?></textarea>
-			<input type="submit">
-		</form>
+		<div id="bio" method="POST">
+			<textarea disabled name="bio" class="edit"><?php echo $bio; ?></textarea>
+			<button style="display: none;" onclick="editRecuest(bio)">edit</button>
+		</div>
 		<button onclick="edit(bio)">test</button>
 	</div>
 </div>

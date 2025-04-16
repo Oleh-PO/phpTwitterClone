@@ -1,0 +1,129 @@
+@use 'container' as *;
+@use 'init' as *;
+
+
+body {
+  margin: 0;
+  @include simpleBac($mainColor);
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+main {
+  border-top: $borderColor 6px solid;
+  width: 100%;
+  position: absolute;
+  top: 10%;
+  @include background;
+}
+nav * {
+  z-index: 10;
+}
+div {
+  outline: 1px solid $borderColor;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
+textarea {
+  width: -webkit-fill-available;
+  height: max-content;
+  resize: none;
+  field-sizing: content;
+  &:disabled {
+
+  }
+}
+.navMain {
+  @include simpleBac($additionalColor);
+  position: fixed;
+  right: 10px;
+  min-width: min-content;
+  width: 15%;
+  min-height: min-content;
+  height: 25%;
+  a {
+    outline: 1px solid red;
+    text-align: center;
+    width: 45%;
+    margin: 5%;
+    padding: 3% 0 3% 0;
+  }
+}
+.navSearch {
+  height: 0;
+  position: fixed;
+  width: 100%;
+}
+.searchInput {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 20%;
+  min-width: min-content;
+}
+.account {
+  @include transBac($mainColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+  img {
+    height: 30px;
+  }
+}
+.user {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.none {
+  display: none;
+}
+.createPost {
+  form {
+    display: flex;
+  }
+  textarea {
+    resize: none;
+    width: -webkit-fill-available;
+    border: none;
+    outline: 1px solid;
+    margin: 3px;
+  }
+  input {
+    margin: 5px;
+  }
+}
+h2 {
+  display: inline-block;
+}
+.profile {
+  @include transBac($mainColor);
+  border-style: solid;
+  border-width: 2px;
+  border-color: $borderColor;
+  border-top: none;
+  width: 80%;
+  position: relative;
+  left: 10%;
+  h2 {
+    font-size: 45px;
+    margin-left: 20px;
+    line-height: 0;
+  }
+}
+.userFlex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  img {
+    height: 100px;
+    outline: 1px solid black;
+  }
+}
+.bio {
+  margin: 5px;
+}

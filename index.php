@@ -9,17 +9,17 @@
 		$title = "unknown";
 	}
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<title>
 		<?php echo $title; ?>
 	</title>
-	<link rel="stylesheet" type="text/css" href="css/profile.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/profile.css"> -->
 		<script type="text/javascript">
 			let user = false;
 			<?php if (isset($_GET['user'])): ?>
@@ -36,9 +36,10 @@
 	<main>
 		<?php if (isset($_GET['user'])){require 'html/profile.php';} ?>
 		<div class="container">
-			<?php require $_SERVER['DOCUMENT_ROOT'] . "\html\post.php" ?>
-			<button onclick="loadPost()">test</button> <!-- test buttons -->
-			<button onclick="changeOrder()" id="checkbox">order</button>
+			<?php if (isset($_SESSION['id'])){require $_SERVER['DOCUMENT_ROOT'] . "\html\post.php";} ?>
+			<div class="sort">
+				<button onclick="changeOrder()" id="checkbox">order</button>
+			</div>
 			<div class="postContainer"> 
 				<?php if (isset($_GET['post'])) { 
 					//test for GET "post" if true puts additional template

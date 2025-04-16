@@ -1,0 +1,14 @@
+$mainColor: #777eaf;
+$additionalColor: #af777e;
+$borderColor: #613f43;
+
+@mixin background(){
+  background-color: white;
+  background-image: linear-gradient(90deg, #8c77afdb 0%, #af777edb 50%, #8c77afdb 100%);
+}
+@mixin simpleBac($color){
+  background: $color;
+}
+@mixin transBac($color){
+  background: transparentize($color, 0.33);
+}

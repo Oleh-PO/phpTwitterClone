@@ -15,24 +15,26 @@
 
 	$userSettings = "";
 
-	$sName = $_SERVER['SERVER_NAME']."/?post=".$row['user_id'];
+	$sName = $_SERVER['SERVER_NAME']."/?post=".$row['id'];
 
 	//test for owner, if ownership true -> add edit and delete buttons	
 	if (isset($_SESSION['id']) && $row['user_id'] === $_SESSION['id']) {
 		$userSettings = 
 		"
 			<button onclick='edit(p".$row['id'].")'>edit</button>
-			<button>delete</button>
+			<button onclick='deletePost(".$row['id'].")'>delete</button>
 		";
 	}
 ?>
 
 <div class='post'> <!-- post template -->
 	<div class='postHeader'>
-		<div class='userFlex postFlex'>
-			<img src='https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg'>
-			<h3> <?php echo $row['login'] ?> </h3>
-		</div>
+		<a href="<?php echo '/?user=' . $row['user_id']?>">
+			<div class='userFlex postFlex'>
+				<img src='https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg'>
+				<h3> <?php echo $row['login'] ?> </h3>
+			</div>
+		</a>
 		<div class='menuDrop'>
 			<button>⁞</button>
 			<div>
@@ -41,9 +43,9 @@
 			</div>
 		</div>
 	</div>
-	<form id="<?php echo "p".$row['id'] ?>" method="POST"> <!-- form for edit? for test now -->
+	<p id="<?php echo "p" . $row['id'] ?>" method="POST"> <!-- form for edit? for test now -->
 		<textarea disabled><?php echo $row['content'] ?></textarea>
-		<input style="display: none;" type="submit">
-	</form>
+		<button onclick="editRecuest(<?php echo "p" . $row['id'] ?>)" style="display: none;">edit</button>
+	</p>
 	<span><?php echo $row['date'] ?></span>
 </div>
