@@ -1,14 +1,14 @@
 @use 'init' as *;
 
 .container {
-  border-style: none solid;
-  border-width: 2px;
-  border-color: $borderColor;
+  position: relative;
   @include transBac($mainColor);
   margin: auto;
   width: 60%;
 }
 .post {
+  border: 2px solid $borderColor;
+  border-top: none;
   padding: 10px;
   h3 {
     margin: 15px 0 15px 10px;
@@ -17,15 +17,21 @@
   img {
     height: 40px !important;
   }
-  span {
+  .time {
     display: block;
     text-align: right;
     position: relative;
     right: 20px;
+    span {
+      padding: 3px;
+      @include transBac(white);
+      @include outline($borderColor);
+    }
   }
 }
 .postFlex {
-  padding: 7px;
+  @include simpleBac(white);
+  @include outline($borderColor);
 }
 .bottom {
   outline: none;
@@ -53,7 +59,48 @@
   }
 }
 .sort {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 10px;
+  position: absolute;
+  right: 3%;
+  padding: 3px;
+  button {
+    padding: 3px;
+  }
+}
+.createPost {
+  border: 2px solid $borderColor;
+  border-top: none;
+  form {
+    display: flex;
+  }
+  textarea {
+    height: max-content;
+    min-height: 50px;
+    resize: none;
+    width: -webkit-fill-available;
+    border: none;
+    outline: 1px solid;
+    margin: 3px;
+  }
+  input {
+    max-height: 50px;
+    margin: 5px;
+  }
+}
+.sortButton:before {
+  content: "▽";
+  // position: relative;
+  left: 17px;
+}
+.sortTrue::before {
+  content: "△";
+}
+.share:focus::before{
+  content: "coppied";
+  position: absolute;
+  left: 55px;
+  @include transBac(white);
+  @include outline(white);
+}
+.postContainer {
+  width: 100%;
 }

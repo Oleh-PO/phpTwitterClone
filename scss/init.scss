@@ -12,3 +12,7 @@ $borderColor: #613f43;
 @mixin transBac($color){
   background: transparentize($color, 0.33);
 }
+@mixin outline($color){
+  outline: solid 1px $color;
+  border-radius: 5px;
+}

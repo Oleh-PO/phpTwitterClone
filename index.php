@@ -37,8 +37,8 @@
 		<?php if (isset($_GET['user'])){require 'html/profile.php';} ?>
 		<div class="container">
 			<?php if (isset($_SESSION['id'])){require $_SERVER['DOCUMENT_ROOT'] . "\html\post.php";} ?>
-			<div class="sort">
-				<button onclick="changeOrder()" id="checkbox">order</button>
+			<div onclick="changeOrder()" class="sort">
+				<button class="sortButton" id="checkbox">sort</button><!--△▽-->
 			</div>
 			<div class="postContainer"> 
 				<?php if (isset($_GET['post'])) { 

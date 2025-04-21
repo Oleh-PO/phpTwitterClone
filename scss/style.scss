@@ -5,7 +5,8 @@
 body {
   margin: 0;
   @include simpleBac($mainColor);
-  font-family: "Fira Sans", sans-serif;
+  font-family: unset;
+  font-family: "Fira Sans", sans-serif !important;
   font-weight: 300;
   font-style: normal;
 }
@@ -20,7 +21,7 @@ nav * {
   z-index: 10;
 }
 div {
-  outline: 1px solid $borderColor;
+  // outline: 1px solid $borderColor;
 }
 a {
   color: inherit;
@@ -28,13 +29,33 @@ a {
   cursor: pointer;
 }
 textarea {
+  font-family: inherit !important;
+  @include simpleBac(white);
+  @include outline($borderColor);
   width: -webkit-fill-available;
   height: max-content;
   resize: none;
   field-sizing: content;
   &:disabled {
-
+    color: black;
+    @include transBac(white);
   }
+}
+button {
+  font-family: inherit !important;
+  cursor: pointer;
+  @include outline($borderColor);
+  box-shadow: none;
+  border: unset;
+  &:hover{
+    @include simpleBac(white);
+    outline: none;
+  }
+}
+input[type="submit"] {
+  font-family: inherit !important;
+  cursor: pointer;
+  @include outline($borderColor);
 }
 .navMain {
   @include simpleBac($additionalColor);
@@ -82,21 +103,6 @@ textarea {
 .none {
   display: none;
 }
-.createPost {
-  form {
-    display: flex;
-  }
-  textarea {
-    resize: none;
-    width: -webkit-fill-available;
-    border: none;
-    outline: 1px solid;
-    margin: 3px;
-  }
-  input {
-    margin: 5px;
-  }
-}
 h2 {
   display: inline-block;
 }
@@ -106,9 +112,9 @@ h2 {
   border-width: 2px;
   border-color: $borderColor;
   border-top: none;
+  left: 10%;
   width: 80%;
   position: relative;
-  left: 10%;
   h2 {
     font-size: 45px;
     margin-left: 20px;
@@ -116,9 +122,10 @@ h2 {
   }
 }
 .userFlex {
-  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start;
+  padding: 7px;
+  display: flex;
   img {
     height: 100px;
     outline: 1px solid black;
@@ -126,4 +133,21 @@ h2 {
 }
 .bio {
   margin: 5px;
+  textarea {
+    min-height: 50px;
+  }
+  & > button {
+    position: absolute;
+    top: 10px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .container {
+    margin: 0;
+    width: -webkit-fill-available;
+  }
+  .profile {
+    width: -webkit-fill-available;
+    left: 0;
+  }
 }

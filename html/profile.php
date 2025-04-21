@@ -26,11 +26,12 @@
 		<h2><?php echo $name; ?></h2>
 	</div>
 	<div class="bio">
-		<h4>bio:</h4>
 		<div id="bio" method="POST">
 			<textarea disabled name="bio" class="edit"><?php echo $bio; ?></textarea>
-			<button style="display: none;" onclick="editRecuest(bio)">edit</button>
+			<button style="display: none;" onclick="editRecuest(bio)">confirm</button>
 		</div>
-		<button onclick="edit(bio)">test</button>
+		<?php if (isset($_SESSION['id']) && $_SESSION['id'] === $profile_id): ?>
+			<button onclick="edit(bio)">¶</button>
+		<?php endif ?>
 	</div>
 </div>

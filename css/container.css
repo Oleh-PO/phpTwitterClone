@@ -1,13 +1,14 @@
+@charset "UTF-8";
 .container {
-  border-style: none solid;
-  border-width: 2px;
-  border-color: #613f43;
+  position: relative;
   background: rgba(119, 126, 175, 0.67);
   margin: auto;
   width: 60%;
 }
 
 .post {
+  border: 2px solid #613f43;
+  border-top: none;
   padding: 10px;
 }
 .post h3 {
@@ -17,15 +18,23 @@
 .post img {
   height: 40px !important;
 }
-.post span {
+.post .time {
   display: block;
   text-align: right;
   position: relative;
   right: 20px;
 }
+.post .time span {
+  padding: 3px;
+  background: rgba(255, 255, 255, 0.67);
+  outline: solid 1px #613f43;
+  border-radius: 5px;
+}
 
 .postFlex {
-  padding: 7px;
+  background: white;
+  outline: solid 1px #613f43;
+  border-radius: 5px;
 }
 
 .bottom {
@@ -57,9 +66,55 @@
 }
 
 .sort {
+  position: absolute;
+  right: 3%;
+  padding: 3px;
+}
+.sort button {
+  padding: 3px;
+}
+
+.createPost {
+  border: 2px solid #613f43;
+  border-top: none;
+}
+.createPost form {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 10px;
+}
+.createPost textarea {
+  height: max-content;
+  min-height: 50px;
+  resize: none;
+  width: -webkit-fill-available;
+  border: none;
+  outline: 1px solid;
+  margin: 3px;
+}
+.createPost input {
+  max-height: 50px;
+  margin: 5px;
+}
+
+.sortButton:before {
+  content: "▽";
+  left: 17px;
+}
+
+.sortTrue::before {
+  content: "△";
+}
+
+.share:focus::before {
+  content: "coppied";
+  position: absolute;
+  left: 55px;
+  background: rgba(255, 255, 255, 0.67);
+  outline: solid 1px white;
+  border-radius: 5px;
+}
+
+.postContainer {
+  width: 100%;
 }
 
 /*# sourceMappingURL=container.css.map */

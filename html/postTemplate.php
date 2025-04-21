@@ -38,7 +38,7 @@
 		<div class='menuDrop'>
 			<button>⁞</button>
 			<div>
-				<button onclick="copy('<?php echo $sName ?>')">share</button>
+				<button class="share" onclick="copy('<?php echo $sName ?>')">share</button>
 				<?php echo $userSettings ?>
 			</div>
 		</div>
@@ -47,5 +47,7 @@
 		<textarea disabled><?php echo $row['content'] ?></textarea>
 		<button onclick="editRecuest(<?php echo "p" . $row['id'] ?>)" style="display: none;">edit</button>
 	</p>
-	<span><?php echo $row['date'] ?></span>
+	<div class="time">
+		<span><?php echo $row['date'] ?></span>
+	</div>
 </div>

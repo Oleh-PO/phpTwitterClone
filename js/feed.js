@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	changeOrder = function() {//chang list order(new > old)
 		postContainer.innerHTML = "";
+		document.querySelector(".sortButton").classList.toggle("sortTrue");
 
 		order = !order;
 		ty 		= 0;
