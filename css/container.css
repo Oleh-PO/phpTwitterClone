@@ -1,13 +1,21 @@
 @charset "UTF-8";
+:root {
+  --mainColor: #777eaf;
+  --additionalColor: #af777e;
+  --borderColor: #613f43;
+  --themeWhite: #ffffff;
+  --textColor: #000000;
+}
+
 .container {
   position: relative;
-  background: rgba(119, 126, 175, 0.67);
+  background: color(from var(--mainColor) srgb r g b/0.77);
   margin: auto;
   width: 60%;
 }
 
 .post {
-  border: 2px solid #613f43;
+  border: 2px solid var(--borderColor);
   border-top: none;
   padding: 10px;
 }
@@ -26,21 +34,25 @@
 }
 .post .time span {
   padding: 3px;
-  background: rgba(255, 255, 255, 0.67);
-  outline: solid 1px #613f43;
+  background: color(from var(--themeWhite) srgb r g b/0.77);
+  outline: solid 1px var(--borderColor);
   border-radius: 5px;
 }
 
 .postFlex {
-  background: white;
-  outline: solid 1px #613f43;
+  background: var(--themeWhite);
+  outline: solid 1px var(--borderColor);
   border-radius: 5px;
+}
+.postFlex:hover {
+  background: var(--themeWhite);
+  outline: none;
 }
 
 .bottom {
   outline: none;
-  position: relative;
-  bottom: 5%;
+  position: absolute;
+  bottom: 10%;
 }
 
 .postHeader {
@@ -64,6 +76,12 @@
 .menuDrop div {
   display: none;
 }
+.menuDrop div button {
+  margin: 1px;
+}
+.menuDrop button {
+  background: var(--themeWhite);
+}
 
 .sort {
   position: absolute;
@@ -75,7 +93,7 @@
 }
 
 .createPost {
-  border: 2px solid #613f43;
+  border: 2px solid var(--borderColor);
   border-top: none;
 }
 .createPost form {
@@ -95,7 +113,7 @@
   margin: 5px;
 }
 
-.sortButton:before {
+.sortButton::before {
   content: "▽";
   left: 17px;
 }
@@ -108,8 +126,8 @@
   content: "coppied";
   position: absolute;
   left: 55px;
-  background: rgba(255, 255, 255, 0.67);
-  outline: solid 1px white;
+  background: color(from var(--themeWhite) srgb r g b/0.77);
+  outline: solid 1px var(--themeWhite);
   border-radius: 5px;
 }
 

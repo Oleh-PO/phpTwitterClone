@@ -1,3 +1,9 @@
-
+:root {
+  --mainColor: #777eaf;
+  --additionalColor: #af777e;
+  --borderColor: #613f43;
+  --themeWhite: #ffffff;
+  --textColor: #000000;
+}
 
 /*# sourceMappingURL=init.css.map */

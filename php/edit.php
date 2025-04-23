@@ -8,13 +8,14 @@
 			$id = ltrim($id, "p");
 
 			if (!isOwner()) {
-				die("wrong post");
+				die("wrong post by isOwner");
 			}
 
 			$sql = "
 				UPDATE Posts SET content = '$textData'
 				WHERE id = $id;
 			";
+
 		} else if ($id === "bio") {
 			$sql = "
 				SELECT id FROM Users
@@ -22,8 +23,9 @@
 			";
 
 			if (!mysqli_query($conn, $sql)) {
-				die("wrong post");
+				die("wrong post by sql");
 			}
+
 			$sql = "
 				UPDATE Users SET bio = '$textData'
 				WHERE id = $login;

@@ -1,9 +1,8 @@
 <?php 
-	$profile_id = $_GET["user"];
 
 	$sql = "
 	SELECT login, bio FROM Users
-	WHERE	id = '$profile_id';
+	WHERE	id = '$getUserId';
 	";
 
 	$result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
@@ -30,7 +29,7 @@
 			<textarea disabled name="bio" class="edit"><?php echo $bio; ?></textarea>
 			<button style="display: none;" onclick="editRecuest(bio)">confirm</button>
 		</div>
-		<?php if (isset($_SESSION['id']) && $_SESSION['id'] === $profile_id): ?>
+		<?php if ($userId === $getUserId): ?>
 			<button onclick="edit(bio)">¶</button>
 		<?php endif ?>
 	</div>

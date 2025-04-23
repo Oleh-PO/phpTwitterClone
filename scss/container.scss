@@ -24,19 +24,20 @@
     right: 20px;
     span {
       padding: 3px;
-      @include transBac(white);
+      @include transBac($themeWhite);
       @include outline($borderColor);
     }
   }
 }
 .postFlex {
-  @include simpleBac(white);
+  @include simpleBac($themeWhite);
   @include outline($borderColor);
+  @include hover();
 }
 .bottom {
   outline: none;
-  position: relative;
-  bottom: 5%;
+  position: absolute;
+  bottom: 10%;
 }
 .postHeader {
   display: flex;
@@ -56,6 +57,12 @@
   align-items: center;
   div {
     display: none;
+    button {
+      margin: 1px;
+    }
+  }
+  button {
+    @include simpleBac($themeWhite);
   }
 }
 .sort {
@@ -86,20 +93,19 @@
     margin: 5px;
   }
 }
-.sortButton:before {
+.sortButton::before {
   content: "▽";
-  // position: relative;
   left: 17px;
 }
 .sortTrue::before {
   content: "△";
 }
-.share:focus::before{
+.share:focus::before {
   content: "coppied";
   position: absolute;
   left: 55px;
-  @include transBac(white);
-  @include outline(white);
+  @include transBac($themeWhite);
+  @include outline($themeWhite);
 }
 .postContainer {
   width: 100%;

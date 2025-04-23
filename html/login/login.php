@@ -1,5 +1,6 @@
 <?php 
-	$conn = require $_SERVER['DOCUMENT_ROOT'] . "\php\sql.php";//connects to mysql via sql.php file
+	require $_SERVER['DOCUMENT_ROOT'] . "\php\init.php";
+	init();
 
 	if ($_SERVER['REQUEST_METHOD'] === "POST") {
 		$login    = $_POST["login"];
@@ -11,10 +12,10 @@
 		";
 		$result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 		if (password_verify($password, $result["password"])) {
-			session_start();
 			var_dump($result["id"]);
-			$_SESSION["id"] = $result["id"];
+			$_SESSION["id"] 			= $result["id"];
 			$_SESSION["username"] = $result["login"];
+
 			header("Location: /");
 			exit();
 		}

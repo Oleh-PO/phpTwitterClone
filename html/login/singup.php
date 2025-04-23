@@ -1,5 +1,6 @@
 <?php
-	$conn = require $_SERVER['DOCUMENT_ROOT'] . "\php\sql.php";//connects to mysql via sql.php file
+	require $_SERVER['DOCUMENT_ROOT'] . "\php\init.php";
+	init();
 
 	function validInput($input, $type, ) { //test for uniqueness
 		global $conn;
@@ -13,6 +14,7 @@
       return !is_array($result);
 		}
 	}
+
   if ($_SERVER['REQUEST_METHOD'] === "POST") { //validate form
 		$login    = $_POST["login"];
 		$email    = $_POST["email"];

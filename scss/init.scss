@@ -1,18 +1,39 @@
-$mainColor: #777eaf;
-$additionalColor: #af777e;
-$borderColor: #613f43;
+// $mainColor: #777eaf;
+// $additionalColor: #af777e;
+// $borderColor: #613f43;
 
-@mixin background(){
-  background-color: white;
+:root {
+  --mainColor: #777eaf;
+  --additionalColor: #af777e;
+  --borderColor: #613f43;
+  --themeWhite: #ffffff;
+  --textColor: #000000;
+}
+
+$mainColor: var(--mainColor);
+$additionalColor: var(--additionalColor);
+$borderColor: var(--borderColor);
+$themeWhite: var(--themeWhite);
+$textColor: var(--textColor);
+
+
+@mixin background() {
+  background-color: $themeWhite;
   background-image: linear-gradient(90deg, #8c77afdb 0%, #af777edb 50%, #8c77afdb 100%);
 }
-@mixin simpleBac($color){
+@mixin simpleBac($color) {
   background: $color;
 }
-@mixin transBac($color){
-  background: transparentize($color, 0.33);
+@mixin transBac($color) {
+  background: color(from $color srgb r g b / 0.77);
 }
-@mixin outline($color){
+@mixin outline($color) {
   outline: solid 1px $color;
   border-radius: 5px;
+}
+@mixin hover() {
+  &:hover{
+    @include simpleBac($themeWhite);
+    outline: none;
+  }
 }

@@ -1,10 +1,11 @@
-@use 'container' as *;
 @use 'init' as *;
-
+@use 'container' as *;
+@use 'nav';
 
 body {
   margin: 0;
   @include simpleBac($mainColor);
+  color: $textColor !important;
   font-family: unset;
   font-family: "Fira Sans", sans-serif !important;
   font-weight: 300;
@@ -20,9 +21,6 @@ main {
 nav * {
   z-index: 10;
 }
-div {
-  // outline: 1px solid $borderColor;
-}
 a {
   color: inherit;
   text-decoration: inherit;
@@ -30,70 +28,35 @@ a {
 }
 textarea {
   font-family: inherit !important;
-  @include simpleBac(white);
+  @include simpleBac($themeWhite);
   @include outline($borderColor);
   width: -webkit-fill-available;
   height: max-content;
   resize: none;
   field-sizing: content;
+  color: $textColor;
   &:disabled {
-    color: black;
-    @include transBac(white);
+    color: $textColor;
+    @include transBac($themeWhite);
   }
 }
 button {
+  color: $textColor;
+  @include transBac($themeWhite);
   font-family: inherit !important;
   cursor: pointer;
   @include outline($borderColor);
   box-shadow: none;
   border: unset;
-  &:hover{
-    @include simpleBac(white);
-    outline: none;
-  }
+  @include hover();
 }
 input[type="submit"] {
   font-family: inherit !important;
   cursor: pointer;
+  color: $textColor;
+  @include simpleBac($themeWhite);
   @include outline($borderColor);
-}
-.navMain {
-  @include simpleBac($additionalColor);
-  position: fixed;
-  right: 10px;
-  min-width: min-content;
-  width: 15%;
-  min-height: min-content;
-  height: 25%;
-  a {
-    outline: 1px solid red;
-    text-align: center;
-    width: 45%;
-    margin: 5%;
-    padding: 3% 0 3% 0;
-  }
-}
-.navSearch {
-  height: 0;
-  position: fixed;
-  width: 100%;
-}
-.searchInput {
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  width: 20%;
-  min-width: min-content;
-}
-.account {
-  @include transBac($mainColor);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30%;
-  img {
-    height: 30px;
-  }
+  @include hover();
 }
 .user {
   display: flex;
@@ -104,7 +67,11 @@ input[type="submit"] {
   display: none;
 }
 h2 {
+  color: $textColor;
   display: inline-block;
+}
+h4 {
+  color: $textColor;
 }
 .profile {
   @include transBac($mainColor);

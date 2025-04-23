@@ -21,12 +21,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	loadPost = function() {
 		const xhttp = new XMLHttpRequest();
+
 		xhttp.onload = function() {
-			postContainer.innerHTML += xhttp.response;
-			ty++;
+			if (xhttp.response) {
+				postContainer.innerHTML += xhttp.response;
+				ty++;
+			}
 		}
 
-		xhttp.open("GET", "/php/feed.php/?offset="+ty+"&order="+order+"&"+user);
+		xhttp.open("GET", "/php/feed.php/?offset="+ty+"&order="+order+"&"+userId);
 		xhttp.send(); //ajax recuest to feed.php, respond whit post. chang post via postTemplate.php
 	}
 
@@ -39,5 +42,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	const observer = new IntersectionObserver(loadPost, options);
 
 	observer.observe(document.querySelector(".bottom"));
-	document.documentElement.scrollTop = 0;//observer thet fires when scrold to bottom, load new posts
+	document.documentElement.scrollTop = 0;//observer fires when scrold to bottom -> load new posts
 });

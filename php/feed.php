@@ -1,11 +1,13 @@
 <?php
-	session_start();
-	$conn 	= require $_SERVER['DOCUMENT_ROOT'] . "\php\sql.php";
+	require $_SERVER['DOCUMENT_ROOT'] . "\php\init.php";
+	init();
+
 	$many 	= 8;
 	$offset = intval($_GET['offset']);
 	$order	= filter_var($_GET['order'], FILTER_VALIDATE_BOOLEAN);
 	$upd 		= $offset * $many;
-	$userSort 	= "";
+
+	$userSort 		= "";
 	$userSettings = "";
 
 	if ($order) {
@@ -14,12 +16,12 @@
 		$sort = "DESC";
 	}
 
-	if (isset($_SESSION['id'])) {
-		$userSort = "WHERE Users.id !=".$_SESSION['id'];
+	if ($userId) {
+		$userSort = "WHERE Users.id !=".$userId;
 	}
 
-	if (isset($_GET['user'])) {
-		$userSort = "WHERE Users.id =".$_GET['user'];
+	if ($getUserId) {
+		$userSort = "WHERE Users.id =".$getUserId;
 	}
 
 	$sql = "
@@ -33,6 +35,7 @@
 	";
 
 	$result = mysqli_query($conn, $sql);
+
 	if (mysqli_num_rows($result) > 0) {
 		while($row = $result->fetch_assoc()) {
 			require $_SERVER['DOCUMENT_ROOT']."/html/postTemplate.php";
