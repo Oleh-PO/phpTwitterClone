@@ -2,15 +2,6 @@
 @use 'container' as *;
 @use 'nav';
 
-body {
-  margin: 0;
-  @include simpleBac($mainColor);
-  color: $textColor !important;
-  font-family: unset;
-  font-family: "Fira Sans", sans-serif !important;
-  font-weight: 300;
-  font-style: normal;
-}
 main {
   border-top: $borderColor 6px solid;
   width: 100%;
@@ -20,11 +11,6 @@ main {
 }
 nav * {
   z-index: 10;
-}
-a {
-  color: inherit;
-  text-decoration: inherit;
-  cursor: pointer;
 }
 textarea {
   font-family: inherit !important;
@@ -59,9 +45,8 @@ input[type="submit"] {
   @include hover();
 }
 .user {
-  display: flex;
+  @include flexCenter();
   justify-content: space-around;
-  align-items: center;
 }
 .none {
   display: none;
@@ -89,10 +74,8 @@ h4 {
   }
 }
 .userFlex {
-  justify-content: center;
-  align-items: center;
+  @include flexCenter();
   padding: 7px;
-  display: flex;
   img {
     height: 100px;
     outline: 1px solid black;
@@ -109,6 +92,32 @@ h4 {
   }
 }
 @media screen and (max-width: 650px) {
+  .navMain {
+    display: flex;
+    a {
+      width: 80px;
+    }
+    .userbar {
+      margin-right: 10px;
+      .userNav {
+        margin: 10px;
+      }
+      a {
+        margin: 0;
+      }
+    }
+  }
+  .settings {
+    @include flexCenter();
+    top: 50px;
+    right: -50px;
+    width: 50%;
+  }
+  .settingsMenu:focus-within .settings {
+    opacity: 1;
+    right: 10px;
+    top: 50px;
+  }
   .container {
     margin: 0;
     width: -webkit-fill-available;
@@ -116,5 +125,41 @@ h4 {
   .profile {
     width: -webkit-fill-available;
     left: 0;
+  }
+}
+.toggle {
+  user-select: none;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-evenly;
+  P {
+    margin: 0;
+    width: 40%;
+  }
+  div {
+    position: relative;
+    transition: 0.1s;
+    width: 30px;
+    height: 10px;
+    &:hover {
+      @include simpleBac($themeWhite);
+      @include outline($borderColor);
+    }
+  }
+  input{
+    display: none;
+  }
+  span {
+    transition: 0.1s;
+    left: 0;
+    @include simpleBac($additionalColor);
+    @include outline($borderColor);
+    position: absolute;
+    padding: 4px;
+    width: 10px;
+    height: 10px;
+  }
+  div:has(input:checked) span {
+    left: 13px;
   }
 }

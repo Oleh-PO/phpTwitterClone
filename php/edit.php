@@ -1,10 +1,10 @@
 <?php 
 	if (isset($_POST)) {
-		require $_SERVER['DOCUMENT_ROOT'] . "/php/isOwner.php";
+		require $_SERVER['DOCUMENT_ROOT'] . "/php/isOwner.php";//also declares init()
 
-		$textData = $body -> content;
+		$textData = $body -> content;//reads a payload
 
-		if ($id[0] === "p") {
+		if ($id[0] === "p") {//if p (post) - edit post with id
 			$id = ltrim($id, "p");
 
 			if (!isOwner()) {
@@ -16,19 +16,19 @@
 				WHERE id = $id;
 			";
 
-		} else if ($id === "bio") {
+		} else if ($id === "bio") {//else if bio - edit bio of user
 			$sql = "
 				SELECT id FROM Users
-				WHERE	id = $login;
+				WHERE	id = $userId;
 			";
 
 			if (!mysqli_query($conn, $sql)) {
-				die("wrong post by sql");
+				die("wrong user");
 			}
 
 			$sql = "
 				UPDATE Users SET bio = '$textData'
-				WHERE id = $login;
+				WHERE id = $userId;
 			";
 		}
 

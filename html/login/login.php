@@ -10,14 +10,18 @@
 			SELECT id, password, login FROM Users
 			WHERE login = '$login' OR email = '$login';
 		";
-		$result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
-		if (password_verify($password, $result["password"])) {
-			var_dump($result["id"]);
-			$_SESSION["id"] 			= $result["id"];
-			$_SESSION["username"] = $result["login"];
 
-			header("Location: /");
-			exit();
+		$result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+
+		if($result > 0) {
+			if (password_verify($password, $result["password"])) {
+
+				$_SESSION["id"] 			= $result["id"];
+				$_SESSION["username"] = $result["login"];//start session
+
+				header("Location: /");
+				exit();
+			}
 		}
 		mysqli_close($conn);
 	}
@@ -28,19 +32,20 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>login</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<title>LOG IN</title>
 	<link rel="stylesheet" type="text/css" href="/css/form.css">
 </head>
 <body>
 	<div class="form"> 
-		<form method="POST"> POST form
-			<input placeholder="login or email" autocomplete="username" type="text" id="login" name="login">
-			<input placeholder="password" autocomplete="current-password" type="password" name="password" id="password">
+		<form method="POST"> LOG IN
+			<input required minlength="1" maxlength="31" placeholder="login or email" autocomplete="username" type="text" id="login" name="login">
+			<input required minlength="7" maxlength="15" placeholder="password" autocomplete="current-password" type="password" name="password" id="password">
 			<input type="submit">
 		</form>
-		<a href="/">HOME</a>
-		<a href="/html/login/singup.php">SINGUP</a>
+		<div>
+			<a href="/">HOME</a>
+			<a href="/html/login/singup.php">SIGN UP</a>
+		</div>
 	</div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 	require $_SERVER['DOCUMENT_ROOT'] . "\php\init.php";
-	init();
+	init();//initiating a session and mySQL
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,13 +20,16 @@
 		?>
 	</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/theme.js"></script>
 		<script type="text/javascript">
 			let userId = false;
 			<?php if ($getUserId): ?>
 				userId = "user=<?php echo $getUserId ?>";
 			<?php endif; ?>
+			<?php if (isset($_COOKIE['toggleTheme'])): ?>
+				toggleTheme(<?php echo $_COOKIE['toggleTheme'] ?>);
+			<?php endif; ?>
 		</script>
-		<script type="text/javascript" src="js/theme.js"></script>
 	<script type="text/javascript" src="js/feed.js"></script>
 	<script type="text/javascript" src="js/fileMeneger.js"></script>
 </head>
@@ -35,9 +38,9 @@
 		<?php require 'html/nav.php'; ?> <!-- adding nav bar -->
 	</nav>
 	<main>
-		<?php if ($getUserId) {require 'html/profile.php';} ?>
+		<?php if ($getUserId) {require 'html/profile.php';} ?><!-- adding profile if needed -->
 		<div class="container">
-			<?php if ($userId) {require $_SERVER['DOCUMENT_ROOT'] . "\html\post.php";} ?>
+			<?php if ($userId) {require $_SERVER['DOCUMENT_ROOT'] . "\html\post.php";} ?><!-- adding create post menu -->
 			<div onclick="changeOrder()" class="sort">
 				<button class="sortButton" id="checkbox">sort</button><!--△▽-->
 			</div>

@@ -15,7 +15,7 @@ const edit = function(p) { //edit switch
 	}
 };
 
-const editRecuest = function(p) {
+const editRecuest = function(p) {//make fatch recuest to edit.php
 	const textData = document.querySelector("#" + p.id + " textarea").value;
 
 	fetch("/php/edit.php", {

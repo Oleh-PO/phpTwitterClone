@@ -1,4 +1,4 @@
-<?php //universal sql connection 
+<?php //mySQL connection
 	function sqlInit() {
 		$servername = "mySQL-8.2";
 		$username   = "root";

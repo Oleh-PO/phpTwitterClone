@@ -16,11 +16,11 @@
 		$sort = "DESC";
 	}
 
-	if ($userId) {
+	if ($userId) {//filters post, so user cant see his own posts
 		$userSort = "WHERE Users.id !=".$userId;
 	}
 
-	if ($getUserId) {
+	if ($getUserId) {//-> only show post from user on users page
 		$userSort = "WHERE Users.id =".$getUserId;
 	}
 

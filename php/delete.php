@@ -1,6 +1,6 @@
 <?php 
 	if (isset($_POST)) {
-		require $_SERVER['DOCUMENT_ROOT'] . "/php/isOwner.php";
+		require $_SERVER['DOCUMENT_ROOT'] . "/php/isOwner.php";//also declares init()
 
 		if (isOwner()) {
 			$sql = "

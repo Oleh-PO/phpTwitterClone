@@ -1,5 +1,19 @@
+@use 'init' as *;
+
+html {
+	display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  background-color: color(from $mainColor srgb r g b / 0.77);
+}
 form {
-	outline: 1px solid green;
+	padding: 10px;
+	@include simpleBac($additionalColor);
+	@include outline($borderColor);
 	margin: 0;
 }
 .form {
@@ -7,8 +21,19 @@ form {
   align-items: center;
   flex-direction: column;
 	input {
+		@include outline($borderColor);
+		@include hover();
 		margin: 5px;
 		display: block;
 	}
 }
-
+div {
+	margin-top: 10px;
+}
+a {
+	padding: 5px;
+	margin: 5px;
+	@include simpleBac($themeWhite);
+  @include outline($borderColor);
+  @include hover();
+}

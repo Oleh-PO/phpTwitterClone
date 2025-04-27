@@ -5,6 +5,7 @@
 	function validInput($input, $type, ) { //test for uniqueness
 		global $conn;
 		$length = strlen($input);
+
 		if ($length > 0 && $length < 31) {
 			$sql = "
 			SELECT $type FROM Users
@@ -21,8 +22,8 @@
 		$password = $_POST["password"];
 		$passcon  = $_POST["passCon"];
 
-		if (validInput($login, "login") && validInput($email, "email")) {//for test, make it better for latter 
-			var_dump(true);
+		if (validInput($login, "login") && validInput($email, "email")) {
+
       if (strlen($password) > 7 && strlen($password) < 15 && $password === $passcon) {
       	$hash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -30,6 +31,7 @@
 					INSERT INTO Users (login, email, password)
 					VALUES ('$login', '$email', '$hash');
 				";
+
 				if (mysqli_query($conn, $sql)) {
 					header("Location: /");
 					exit();
@@ -47,21 +49,22 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>sing up</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<title>SIGN UP</title>
 	<link rel="stylesheet" type="text/css" href="/css/form.css">
 </head>
 <body>
 	<div class="form">
-		<form method="POST"> POST form
-			<input placeholder="login" autocomplete="nickname" type="text" id="login" name="login">
-			<input placeholder="email" autocomplete="email" type="email" id="email" name="email">
-			<input placeholder="password" autocomplete="new-password" type="password" name="password" id="password">
-			<input placeholder="confirm password" autocomplete="new-password" type="password" name="passCon" id="passCon">
+		<form method="POST"> SIGN UP
+			<input required minlength="1" maxlength="31" placeholder="login" autocomplete="nickname" type="text" id="login" name="login">
+			<input required minlength="1" maxlength="31" placeholder="email" autocomplete="email" type="email" id="email" name="email">
+			<input required minlength="7" maxlength="15" placeholder="password" autocomplete="new-password" type="password" name="password" id="password">
+			<input required minlength="7" maxlength="15" placeholder="confirm password" autocomplete="new-password" type="password" name="passCon" id="passCon">
 			<input type="submit">
 		</form>
-		<a href="/">HOME</a>
-		<a href="/html/login/login.php">LOGIN</a>
+		<div>
+			<a href="/">HOME</a>
+			<a href="/html/login/login.php">LOG IN</a>
+		</div>
 	</div>
 </body>
 </html>

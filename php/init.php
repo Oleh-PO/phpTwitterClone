@@ -12,7 +12,7 @@
     $getUserName  = false;
     $postId       = false;
 
-    if (isset($_SESSION['id'])) {
+    if (isset($_SESSION['id'])) {//get data from session
       $userId = $_SESSION['id'];
       $userName = $_SESSION['username'];
     }

@@ -19,7 +19,7 @@ $textColor: var(--textColor);
 
 @mixin background() {
   background-color: $themeWhite;
-  background-image: linear-gradient(90deg, #8c77afdb 0%, #af777edb 50%, #8c77afdb 100%);
+  background-image: linear-gradient(90deg, #8c77af99 0%, #af777e99 50%, #8c77af99 100%);
 }
 @mixin simpleBac($color) {
   background: $color;
@@ -36,4 +36,23 @@ $textColor: var(--textColor);
     @include simpleBac($themeWhite);
     outline: none;
   }
+}
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  margin: 0;
+  @include simpleBac($mainColor);
+  color: $textColor !important;
+  font-family: unset;
+  font-family: "Fira Sans", sans-serif !important;
+  font-weight: 300;
+  font-style: normal;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
 }

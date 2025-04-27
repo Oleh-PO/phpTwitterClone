@@ -7,6 +7,22 @@
   --textColor: #000000;
 }
 
+body {
+  margin: 0;
+  background: var(--mainColor);
+  color: var(--textColor) !important;
+  font-family: unset;
+  font-family: "Fira Sans", sans-serif !important;
+  font-weight: 300;
+  font-style: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
+
 .container {
   position: relative;
   background: color(from var(--mainColor) srgb r g b/0.77);
@@ -57,8 +73,9 @@
 
 .postHeader {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  justify-content: space-between;
 }
 
 .menuDrop {
@@ -147,11 +164,14 @@
 .navMain a {
   text-align: center;
   width: 60%;
-  margin: 5%;
   height: 70%;
+  min-width: min-content;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+}
+.navMain a * {
+  margin: 5px;
 }
 .navMain button {
   height: 100%;
@@ -178,12 +198,14 @@
 .searchInput {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: auto;
   width: 20%;
   min-width: min-content;
 }
 
 .userNav {
+  height: 75% !important;
   background: var(--themeWhite);
   outline: solid 1px var(--borderColor);
   border-radius: 5px;
@@ -193,14 +215,42 @@
   outline: none;
 }
 
-body {
+.settings {
+  width: -webkit-fill-available;
+  position: absolute;
+  top: 120px;
+  opacity: 0;
+  z-index: 9;
+  transition: 0.1s;
+}
+.settings div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  background: var(--themeWhite);
+  outline: solid 1px var(--borderColor);
+  border-radius: 5px;
+  width: -webkit-fill-available;
+  margin: 5px;
+}
+.settings div:hover {
+  background: var(--themeWhite);
+  outline: none;
+}
+.settings div > * {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  width: -webkit-fill-available;
+  text-align: center;
+  padding: 3px;
   margin: 0;
-  background: var(--mainColor);
-  color: var(--textColor) !important;
-  font-family: unset;
-  font-family: "Fira Sans", sans-serif !important;
-  font-weight: 300;
-  font-style: normal;
+}
+
+.settingsMenu:focus-within .settings {
+  opacity: 1;
+  top: 200px;
 }
 
 main {
@@ -209,17 +259,11 @@ main {
   position: absolute;
   top: 10%;
   background-color: var(--themeWhite);
-  background-image: linear-gradient(90deg, rgba(140, 119, 175, 0.8588235294) 0%, rgba(175, 119, 126, 0.8588235294) 50%, rgba(140, 119, 175, 0.8588235294) 100%);
+  background-image: linear-gradient(90deg, rgba(140, 119, 175, 0.6) 0%, rgba(175, 119, 126, 0.6) 50%, rgba(140, 119, 175, 0.6) 100%);
 }
 
 nav * {
   z-index: 10;
-}
-
-a {
-  color: inherit;
-  text-decoration: inherit;
-  cursor: pointer;
 }
 
 textarea {
@@ -268,8 +312,9 @@ input[type=submit]:hover {
 
 .user {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  justify-content: space-around;
 }
 
 .none {
@@ -302,10 +347,10 @@ h4 {
 }
 
 .userFlex {
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 7px;
-  display: flex;
 }
 .userFlex img {
   height: 100px;
@@ -324,6 +369,34 @@ h4 {
 }
 
 @media screen and (max-width: 650px) {
+  .navMain {
+    display: flex;
+  }
+  .navMain a {
+    width: 80px;
+  }
+  .navMain .userbar {
+    margin-right: 10px;
+  }
+  .navMain .userbar .userNav {
+    margin: 10px;
+  }
+  .navMain .userbar a {
+    margin: 0;
+  }
+  .settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50px;
+    right: -50px;
+    width: 50%;
+  }
+  .settingsMenu:focus-within .settings {
+    opacity: 1;
+    right: 10px;
+    top: 50px;
+  }
   .container {
     margin: 0;
     width: -webkit-fill-available;
@@ -332,6 +405,44 @@ h4 {
     width: -webkit-fill-available;
     left: 0;
   }
+}
+.toggle {
+  user-select: none;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.toggle P {
+  margin: 0;
+  width: 40%;
+}
+.toggle div {
+  position: relative;
+  transition: 0.1s;
+  width: 30px;
+  height: 10px;
+}
+.toggle div:hover {
+  background: var(--themeWhite);
+  outline: solid 1px var(--borderColor);
+  border-radius: 5px;
+}
+.toggle input {
+  display: none;
+}
+.toggle span {
+  transition: 0.1s;
+  left: 0;
+  background: var(--additionalColor);
+  outline: solid 1px var(--borderColor);
+  border-radius: 5px;
+  position: absolute;
+  padding: 4px;
+  width: 10px;
+  height: 10px;
+}
+.toggle div:has(input:checked) span {
+  left: 13px;
 }
 
 /*# sourceMappingURL=style.css.map */

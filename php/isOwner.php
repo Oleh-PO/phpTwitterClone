@@ -6,7 +6,7 @@
 	$id 	 = $body -> id;
 	
 	function isOwner() {
-		global $id, $conn, $user_id, $userId;
+		global $id, $conn, $userId;
 		$sql = "
 			SELECT user_id FROM Posts
 			WHERE	id = $id;

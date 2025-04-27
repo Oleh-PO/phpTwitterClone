@@ -6,6 +6,22 @@
   --textColor: #000000;
 }
 
+body {
+  margin: 0;
+  background: var(--mainColor);
+  color: var(--textColor) !important;
+  font-family: unset;
+  font-family: "Fira Sans", sans-serif !important;
+  font-weight: 300;
+  font-style: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
+
 .navMain {
   background: var(--additionalColor);
   position: fixed;
@@ -18,11 +34,14 @@
 .navMain a {
   text-align: center;
   width: 60%;
-  margin: 5%;
   height: 70%;
+  min-width: min-content;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+}
+.navMain a * {
+  margin: 5px;
 }
 .navMain button {
   height: 100%;
@@ -49,12 +68,14 @@
 .searchInput {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: auto;
   width: 20%;
   min-width: min-content;
 }
 
 .userNav {
+  height: 75% !important;
   background: var(--themeWhite);
   outline: solid 1px var(--borderColor);
   border-radius: 5px;
@@ -62,6 +83,44 @@
 .userNav:hover {
   background: var(--themeWhite);
   outline: none;
+}
+
+.settings {
+  width: -webkit-fill-available;
+  position: absolute;
+  top: 120px;
+  opacity: 0;
+  z-index: 9;
+  transition: 0.1s;
+}
+.settings div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  background: var(--themeWhite);
+  outline: solid 1px var(--borderColor);
+  border-radius: 5px;
+  width: -webkit-fill-available;
+  margin: 5px;
+}
+.settings div:hover {
+  background: var(--themeWhite);
+  outline: none;
+}
+.settings div > * {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  width: -webkit-fill-available;
+  text-align: center;
+  padding: 3px;
+  margin: 0;
+}
+
+.settingsMenu:focus-within .settings {
+  opacity: 1;
+  top: 200px;
 }
 
 /*# sourceMappingURL=nav.css.map */

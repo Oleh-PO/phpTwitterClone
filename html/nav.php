@@ -1,14 +1,14 @@
-<div class="navSearch"> <!--search bar -->
+<!-- <div class="navSearch">
 	<div class="searchInput">
 		<label name="search">🔍</label>
 		<search><input name="search" type="search"></search>
 	</div>
-</div>
+</div> -->
 <div class="navMain"> <!-- menu -->
-	<div class="bar">
+	<div class="bar userbar">
 		<?php if (!$userId): ?>
-			<a href="/html/login/singup.php"><button>SINGUP</button></a>
-			<a href="/html/login/login.php"><button>LOGIN</button></a>
+			<a href="/html/login/singup.php"><button>SIGN UP</button></a>
+			<a href="/html/login/login.php"><button>LOG IN</button></a>
 		<?php else: ?>
 			<a class="userNav" href=<?php echo "/?user=$userId"?> >
 				<h4><?php echo $userName; ?></h4>
@@ -17,14 +17,25 @@
 		<?php endif; ?>
 	</div>
 	<div class="bar">
-		<a href="/#top"><button>HOME</button></a>
+		<a href="/"><button>HOME</button></a>
 	</div>
-	<div class="bar">
-		<a><button onclick="togleTheme()">settings</button></a>
+	<div class="bar settingsMenu">
+		<a><button onclick="">SETTINGS</button></a>
+		<div class="settings">
+			<div onchange="toggleTheme(theme.checked)"><!-- theme toggle -->
+				<label tabindex="0" class="toggle" for="theme">
+					<p>darkMod</p>
+					<div>
+						<input <?php if(isset($_COOKIE['toggleTheme'])){echo "checked";}?> type="checkbox" id="theme">
+						<span></span>
+					</div>
+				</label>
+			</div>
+		</div>
 	</div>
 	<?php if ($userId): ?>
 		<div class="bar">
-			<a href="/html/login/logout.php"><button>LOGOUT</button></a>
+			<a href="/html/login/logout.php"><button>LOG OUT</button></a>
 		</div>
 	<?php endif; ?>
 </div>

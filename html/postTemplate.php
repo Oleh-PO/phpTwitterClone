@@ -44,7 +44,7 @@
 	<p id="<?php echo "p" . $row['id'] ?>" method="POST">
 		<!-- content of user post, if user is post owner add`s buttons for edit and delete-->
 		<textarea disabled><?php echo $row['content'] ?></textarea>
-		<button onclick="editRecuest(<?php echo "p" . $row['id'] ?>)" style="display: none;">edit</button>
+		<button onclick="editRecuest(<?php echo "p" . $row['id'] ?>)" style="display: none;">confirm</button>
 	</p>
 	<div class="time">
 		<span><?php echo $row['date'] ?></span>

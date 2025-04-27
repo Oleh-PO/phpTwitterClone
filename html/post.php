@@ -17,7 +17,7 @@
 
 <div class="createPost">
 	<form method="POST">
-		<textarea id="story" name="story" rows="5" cols="33"></textarea>
+		<textarea required maxlength="255" minlength="1" id="story" name="story" rows="5" cols="33"></textarea>
 		<input type="submit" name="submit">
 	</form>
 </div>
