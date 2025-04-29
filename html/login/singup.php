@@ -51,6 +51,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SIGN UP</title>
 	<link rel="stylesheet" type="text/css" href="/css/form.css">
+	<script type="text/javascript" src="js/theme.js"></script>
+	<script type="text/javascript">
+		<?php if (isset($_COOKIE['toggleTheme'])): ?>
+			toggleTheme(<?php echo $_COOKIE['toggleTheme'] ?>);
+		<?php endif; ?>
+	</script>
 </head>
 <body>
 	<div class="form">

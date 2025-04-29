@@ -1,5 +1,8 @@
 <?php
 	require $_SERVER['DOCUMENT_ROOT'] . "\php\init.php";
+	require $_SERVER['DOCUMENT_ROOT'] . "\html\post.php";
+	require $_SERVER['DOCUMENT_ROOT'] . "\php\getBio.php";
+	require $_SERVER['DOCUMENT_ROOT']."\php\pullPost.php";
 	init();//initiating a session and mySQL
 ?>
 <!DOCTYPE html>
@@ -38,9 +41,9 @@
 		<?php require 'html/nav.php'; ?> <!-- adding nav bar -->
 	</nav>
 	<main>
-		<?php if ($getUserId) {require 'html/profile.php';} ?><!-- adding profile if needed -->
+		<?php if ($getUserId) {require 'html/profile.php';} ?><!-- adding profile if $getUserId isn't false -->
 		<div class="container">
-			<?php if ($userId) {require $_SERVER['DOCUMENT_ROOT'] . "\html\post.php";} ?><!-- adding create post menu -->
+			<?php if ($userId) {createPost();} ?><!-- adding create post menu -->
 			<div onclick="changeOrder()" class="sort">
 				<button class="sortButton" id="checkbox">sort</button><!--△▽-->
 			</div>
@@ -48,7 +51,7 @@
 				<?php
 					if ($postId) {
 						//test for GET "post" if true puts additional template
-						require $_SERVER['DOCUMENT_ROOT']."/html/postTemplate.php";
+						pullPost();
 					}
 				?>
 			</div>
@@ -57,4 +60,4 @@
 	</main>
 </body>
 </html>
-<?php mysqli_close($conn); ?>
+<?php close(); ?>

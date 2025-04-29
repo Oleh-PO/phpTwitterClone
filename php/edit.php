@@ -1,37 +1,42 @@
 <?php 
-	if (isset($_POST)) {
-		require $_SERVER['DOCUMENT_ROOT'] . "/php/isOwner.php";//also declares init()
+if (isset($_POST)) {
+	require $_SERVER['DOCUMENT_ROOT'] . "/php/isOwner.php";
+	require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
+	init();
 
-		$textData = $body -> content;//reads a payload
+	$body	 = json_decode(file_get_contents('php://input'));
+	$id 	 = $body -> id;
 
-		if ($id[0] === "p") {//if p (post) - edit post with id
-			$id = ltrim($id, "p");
+	$textData = $body -> content;//reads a payload
 
-			if (!isOwner()) {
-				die("wrong post by isOwner");
-			}
+	if ($id[0] === "p") {//if p (post) - edit post with id
+		$id = ltrim($id, "p");
 
-			$sql = "
-				UPDATE Posts SET content = '$textData'
-				WHERE id = $id;
-			";
-
-		} else if ($id === "bio") {//else if bio - edit bio of user
-			$sql = "
-				SELECT id FROM Users
-				WHERE	id = $userId;
-			";
-
-			if (!mysqli_query($conn, $sql)) {
-				die("wrong user");
-			}
-
-			$sql = "
-				UPDATE Users SET bio = '$textData'
-				WHERE id = $userId;
-			";
+		if (!isOwner()) {
+			die("wrong post by isOwner");
 		}
 
-		mysqli_query($conn, $sql);
-		mysqli_close($conn);
+		$sql = "
+			UPDATE Posts SET content = '$textData'
+			WHERE id = $id;
+		";
+
+	} else if ($id === "bio") {//else if bio - edit bio of user
+		$sql = "
+			SELECT id FROM Users
+			WHERE	id = $userId;
+		";
+
+		if (!mysqli_query($conn, $sql)) {
+			die("wrong user");
+		}
+
+		$sql = "
+			UPDATE Users SET bio = '$textData'
+			WHERE id = $userId;
+		";
 	}
+
+	mysqli_query($conn, $sql);
+	close();
+}
