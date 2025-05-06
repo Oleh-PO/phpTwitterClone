@@ -8,6 +8,7 @@
   --borderColor: #613f43;
   --themeWhite: #ffffff;
   --textColor: #000000;
+  --errorRed: #c60d3b;
 }
 
 $mainColor: var(--mainColor);
@@ -15,6 +16,7 @@ $additionalColor: var(--additionalColor);
 $borderColor: var(--borderColor);
 $themeWhite: var(--themeWhite);
 $textColor: var(--textColor);
+$errorRed: var(--errorRed);
 
 
 @mixin background() {

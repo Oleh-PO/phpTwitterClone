@@ -22,12 +22,14 @@ form {
   flex-direction: column;
 	input {
 		@include outline($borderColor);
+		@include simpleBac($themeWhite);
 		@include hover();
-		margin: 5px;
+		color: $textColor;
+		margin: 3px;
 		display: block;
 	}
 }
-div {
+div:not(.inputDiv) {
 	margin-top: 10px;
 }
 a {
@@ -36,4 +38,14 @@ a {
 	@include simpleBac($themeWhite);
   @include outline($borderColor);
   @include hover();
+}
+.inputDiv{
+	display: flex;
+}
+.invalid::after {
+	content: "*";
+	color: $errorRed;
+}
+span {
+	color: $errorRed;
 }

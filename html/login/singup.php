@@ -1,20 +1,12 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT'] . "\php\init.php";
+	require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
+	require $_SERVER['DOCUMENT_ROOT'] . "/html/login/loginFun.php";
 	init();
 
-	function validInput($input, $type, ) { //test for uniqueness
-		global $conn;
-		$length = strlen($input);
-
-		if ($length > 0 && $length < 31) {
-			$sql = "
-			SELECT $type FROM Users
-			WHERE $type = '$input';
-      ";
-      $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
-      return !is_array($result);
-		}
-	}
+	$login    = false;
+	$email    = false;
+	$password = false;
+	$passcon  = false;
 
   if ($_SERVER['REQUEST_METHOD'] === "POST") { //validate form
 		$login    = $_POST["login"];
@@ -22,23 +14,30 @@
 		$password = $_POST["password"];
 		$passcon  = $_POST["passCon"];
 
-		if (validInput($login, "login") && validInput($email, "email")) {
+		if (validation()) {
 
-      if (strlen($password) > 7 && strlen($password) < 15 && $password === $passcon) {
-      	$hash = password_hash($password, PASSWORD_DEFAULT);
+			$sql = "
+				INSERT INTO Users (login, email, password)
+				VALUES ('$login', '$email', '$hash');
+			";
+
+			if (mysqli_query($conn, $sql)) {
 
 				$sql = "
-					INSERT INTO Users (login, email, password)
-					VALUES ('$login', '$email', '$hash');
-				";
+					SELECT id FROM Users
+					WHERE login = '$login';
+	      ";
 
-				if (mysqli_query($conn, $sql)) {
-					header("Location: /");
-					exit();
-				} else {
-					die("error");
-				}
-			}	
+	      $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+
+				$_SESSION["id"] 			= $result["id"];
+				$_SESSION["username"] = $login;//start session
+
+				header("Location:/");
+				exit();
+			} else {
+				var_dump("error");
+			}
 		}
   }
   mysqli_close($conn);
@@ -51,7 +50,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SIGN UP</title>
 	<link rel="stylesheet" type="text/css" href="/css/form.css">
-	<script type="text/javascript" src="js/theme.js"></script>
+	<script type="text/javascript" src="/js/theme.js"></script>
 	<script type="text/javascript">
 		<?php if (isset($_COOKIE['toggleTheme'])): ?>
 			toggleTheme(<?php echo $_COOKIE['toggleTheme'] ?>);
@@ -61,11 +60,22 @@
 <body>
 	<div class="form">
 		<form method="POST"> SIGN UP
-			<input required minlength="1" maxlength="31" placeholder="login" autocomplete="nickname" type="text" id="login" name="login">
-			<input required minlength="1" maxlength="31" placeholder="email" autocomplete="email" type="email" id="email" name="email">
-			<input required minlength="7" maxlength="15" placeholder="password" autocomplete="new-password" type="password" name="password" id="password">
-			<input required minlength="7" maxlength="15" placeholder="confirm password" autocomplete="new-password" type="password" name="passCon" id="passCon">
+			<div class="inputDiv <?php invalidTest($loginError); ?>">
+				<input required minlength="1" maxlength="31" placeholder="nickname" autocomplete="nickname" type="text" id="nickname" name="login" <?php formTest($login); ?>>
+			</div>
+			<div class="inputDiv <?php invalidTest($emailError); ?>">
+				<input required minlength="1" maxlength="31" placeholder="email" autocomplete="email" type="email" id="email" name="email" <?php formTest($email); ?>>
+			</div>
+			<div class="inputDiv <?php invalidTest($passwordError); ?>">
+				<input required minlength="7" maxlength="15" placeholder="password" autocomplete="new-password" type="password" name="password" id="password" <?php formTest($password); ?>>
+			</div>
+			<div class="inputDiv <?php invalidTest($confirmError); ?>">
+				<input required minlength="7" maxlength="15" placeholder="confirm password" autocomplete="new-password" type="password" name="passCon" id="passCon" <?php formTest($passcon); ?>>
+			</div>
 			<input type="submit">
+			<?php if (isset($error)): ?>
+				<span><?php echo $errorMessage[$error]; ?></span>
+			<?php endif; ?>
 		</form>
 		<div>
 			<a href="/">HOME</a>

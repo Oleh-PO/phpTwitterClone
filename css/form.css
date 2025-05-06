@@ -4,6 +4,7 @@
   --borderColor: #613f43;
   --themeWhite: #ffffff;
   --textColor: #000000;
+  --errorRed: #c60d3b;
 }
 
 body {
@@ -50,7 +51,9 @@ form {
 .form input {
   outline: solid 1px var(--borderColor);
   border-radius: 5px;
-  margin: 5px;
+  background: var(--themeWhite);
+  color: var(--textColor);
+  margin: 3px;
   display: block;
 }
 .form input:hover {
@@ -58,7 +61,7 @@ form {
   outline: none;
 }
 
-div {
+div:not(.inputDiv) {
   margin-top: 10px;
 }
 
@@ -72,6 +75,19 @@ a {
 a:hover {
   background: var(--themeWhite);
   outline: none;
+}
+
+.inputDiv {
+  display: flex;
+}
+
+.invalid::after {
+  content: "*";
+  color: var(--errorRed);
+}
+
+span {
+  color: var(--errorRed);
 }
 
 /*# sourceMappingURL=form.css.map */

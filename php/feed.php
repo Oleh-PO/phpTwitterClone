@@ -1,6 +1,6 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'] . "\php\init.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
 init();
 
 $many 	= 8;

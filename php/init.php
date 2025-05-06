@@ -1,7 +1,7 @@
 <?php
 function init() {
   global $conn, $userId, $userName, $getUserId, $getUserName, $postId;
-  require $_SERVER['DOCUMENT_ROOT'] . "\php\sql.php";//connects to mysql via sql.php file
+  require $_SERVER['DOCUMENT_ROOT'] . "/php/sql.php";//connects to mysql via sql.php file
 
   session_start();
   $conn = sqlInit();

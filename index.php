@@ -1,9 +1,11 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT'] . "\php\init.php";
-	require $_SERVER['DOCUMENT_ROOT'] . "\html\post.php";
-	require $_SERVER['DOCUMENT_ROOT'] . "\php\getBio.php";
-	require $_SERVER['DOCUMENT_ROOT']."\php\pullPost.php";
+	require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
+	require $_SERVER['DOCUMENT_ROOT'] . "/php/https.php";
+	require $_SERVER['DOCUMENT_ROOT'] . "/html/post.php";
+	require $_SERVER['DOCUMENT_ROOT'] . "/php/getBio.php";
+	require $_SERVER['DOCUMENT_ROOT'] . "/php/pullPost.php";
 	init();//initiating a session and mySQL
+	https();
 ?>
 <!DOCTYPE html>
 <html>
