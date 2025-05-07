@@ -43,7 +43,7 @@
 		<?php require 'html/nav.php'; ?> <!-- adding nav bar -->
 	</nav>
 	<main>
-		<?php if ($getUserId) {require 'html/profile.php';} ?><!-- adding profile if $getUserId isn't false -->
+		<?php if ($getUserId) {require 'html/profile.php';} ?><!-- adding profile-->
 		<div class="container">
 			<?php if ($userId) {createPost();} ?><!-- adding create post menu -->
 			<div onclick="changeOrder()" class="sort">

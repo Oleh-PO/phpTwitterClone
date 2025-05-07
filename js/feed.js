@@ -14,29 +14,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 		order = !order;
 		ty 		= 0;
-
-		loadPost();
-		ty++;
 	}
 
-	loadPost = function() {
-		const xhttp = new XMLHttpRequest();
+	loadPost = function(entries) {
+		if (entries[0].isIntersecting) {
+			const xhttp = new XMLHttpRequest();
 
-		xhttp.onload = function() {
-			if (xhttp.response) {
-				postContainer.innerHTML += xhttp.response;
-				ty++;
+			xhttp.onload = function() {
+				if (xhttp.response) {
+					postContainer.innerHTML += xhttp.response;
+					ty++;
+				}
 			}
-		}
 
-		xhttp.open("GET", "/php/feed.php/?offset="+ty+"&order="+order+"&"+userId);
-		xhttp.send(); //ajax recuest to feed.php, respond whit post. chang post via postTemplate.php
+			xhttp.open("GET", "/php/feed.php/?offset="+ty+"&order="+order+"&"+userId);
+			xhttp.send(); //ajax recuest to feed.php, respond whit post. chang post via postTemplate.php
+		}
 	}
 
 	const options = {
 		root: null,
 		rootMargin: "0px",
-		threshold: 1.0,
+		threshold: 1,
 	};
 
 	const observer = new IntersectionObserver(loadPost, options);

@@ -254,7 +254,12 @@ a {
   top: 200px;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 main {
+  min-height: -webkit-fill-available;
   border-top: var(--borderColor) 6px solid;
   width: 100%;
   position: absolute;

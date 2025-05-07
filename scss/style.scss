@@ -2,7 +2,12 @@
 @use 'container' as *;
 @use 'nav';
 
+html {
+  overflow-y:scroll;
+}
+
 main {
+  min-height: -webkit-fill-available;
   border-top: $borderColor 6px solid;
   width: 100%;
   position: absolute;
