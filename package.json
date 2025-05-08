@@ -1,0 +1,23 @@
+{
+  "name": "php_twitter_clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "build": "gulp",
+    "style": "sass --watch public/scss:public/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oleh-PO/phpTwitterClone.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oleh-PO/phpTwitterClone/issues"
+  },
+  "homepage": "https://github.com/Oleh-PO/phpTwitterClone#readme",
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "sass": "^1.87.0"
+  }
+}
