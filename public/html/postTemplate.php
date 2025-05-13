@@ -1,32 +1,17 @@
 <?php
-	if (isset($_GET['post'])) {
-		$postId = $_GET['post'];
+  $userSettings = "";
 
-		$sql = "
-			SELECT login, content, date, Users.id as user_id, Posts.id
-			FROM Posts 
-			INNER JOIN Users
-			ON Posts.user_id = Users.id
-			WHERE Posts.id = $postId;
-		";
+  $sName = $_SERVER['SERVER_NAME']."/?post=".$row['id'];
 
-		$row = mysqli_fetch_assoc(mysqli_query($conn, $sql));
-	}
-
-	$userSettings = "";
-
-	$sName = $_SERVER['SERVER_NAME']."/?post=".$row['id'];
-
-	//test for owner, if ownership true -> add edit and delete buttons	
-	if (isset($_SESSION['id']) && $row['user_id'] === $_SESSION['id']) {
-		$userSettings = 
-		"
-			<button onclick='edit(p".$row['id'].")'>edit</button>
-			<button onclick='deletePost(".$row['id'].")'>delete</button>
-		";
-	}
+  //test for owner, if ownership true -> add edit and delete buttons
+  if ($row['user_id'] === $userId) {
+    $userSettings =
+    "
+      <button onclick='edit(p".$row['id'].")'>edit</button>
+      <button onclick='deletePost(".$row['id'].")'>delete</button>
+    ";
+  }
 ?>
-
 <div class='post'> <!-- post template -->
 	<div class='postHeader'>
 		<a href="<?php echo '/?user=' . $row['user_id']?>">
@@ -35,17 +20,20 @@
 				<h3> <?php echo $row['login'] ?> </h3>
 			</div>
 		</a>
-		<div class='menuDrop'>
+		<div class='menuDrop'> <!--drop dawn menu-->
 			<button>⁞</button>
 			<div>
-				<button onclick="copy('<?php echo $sName ?>')">share</button>
+				<button class="share" onclick="copy('<?php echo $sName ?>')">share</button>
 				<?php echo $userSettings ?>
 			</div>
 		</div>
 	</div>
-	<p id="<?php echo "p" . $row['id'] ?>" method="POST"> <!-- form for edit? for test now -->
+	<p id="<?php echo "p" . $row['id'] ?>" method="POST">
+		<!-- content of user post, if user is post owner adds buttons for edit and delete-->
 		<textarea disabled><?php echo $row['content'] ?></textarea>
-		<button onclick="editRecuest(<?php echo "p" . $row['id'] ?>)" style="display: none;">edit</button>
+		<button onclick="editRecuest(<?php echo "p" . $row['id'] ?>)" style="display: none;">confirm</button>
 	</p>
-	<span><?php echo $row['date'] ?></span>
+	<div class="time">
+		<span><?php echo $row['date'] ?></span>
+	</div>
 </div>

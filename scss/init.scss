@@ -1,0 +1,60 @@
+// $mainColor: #777eaf;
+// $additionalColor: #af777e;
+// $borderColor: #613f43;
+
+:root {
+  --mainColor: #777eaf;
+  --additionalColor: #af777e;
+  --borderColor: #613f43;
+  --themeWhite: #ffffff;
+  --textColor: #000000;
+  --errorRed: #c60d3b;
+}
+
+$mainColor: var(--mainColor);
+$additionalColor: var(--additionalColor);
+$borderColor: var(--borderColor);
+$themeWhite: var(--themeWhite);
+$textColor: var(--textColor);
+$errorRed: var(--errorRed);
+
+
+@mixin background() {
+  background-color: $themeWhite;
+  background-image: linear-gradient(90deg, #8c77af99 0%, #af777e99 50%, #8c77af99 100%);
+}
+@mixin simpleBac($color) {
+  background: $color;
+}
+@mixin transBac($color) {
+  background: color(from $color srgb r g b / 0.77);
+}
+@mixin outline($color) {
+  outline: solid 1px $color;
+  border-radius: 5px;
+}
+@mixin hover() {
+  &:hover{
+    @include simpleBac($themeWhite);
+    outline: none;
+  }
+}
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  margin: 0;
+  @include simpleBac($mainColor);
+  color: $textColor !important;
+  font-family: unset;
+  font-family: "Fira Sans", sans-serif !important;
+  font-weight: 300;
+  font-style: normal;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}

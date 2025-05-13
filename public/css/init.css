@@ -1,3 +1,24 @@
+:root {
+  --mainColor: #777eaf;
+  --additionalColor: #af777e;
+  --borderColor: #613f43;
+  --themeWhite: #ffffff;
+  --textColor: #000000;
+  --errorRed: #c60d3b;
+}
 
+body {
+  margin: 0;
+  background: var(--mainColor);
+  color: var(--textColor) !important;
+  font-family: unset;
+  font-family: "Fira Sans", sans-serif !important;
+  font-weight: 300;
+  font-style: normal;
+}
 
-/*# sourceMappingURL=init.css.map */
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}

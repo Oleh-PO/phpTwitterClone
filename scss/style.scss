@@ -1,0 +1,170 @@
+@use 'init' as *;
+@use 'container' as *;
+@use 'nav';
+
+html {
+  overflow-y:scroll;
+}
+
+main {
+  min-height: -webkit-fill-available;
+  border-top: $borderColor 6px solid;
+  width: 100%;
+  position: absolute;
+  top: 10%;
+  @include background;
+}
+nav * {
+  z-index: 10;
+}
+textarea {
+  font-family: inherit !important;
+  @include simpleBac($themeWhite);
+  @include outline($borderColor);
+  width: -webkit-fill-available;
+  height: max-content;
+  resize: none;
+  field-sizing: content;
+  color: $textColor;
+  &:disabled {
+    color: $textColor;
+    @include transBac($themeWhite);
+  }
+}
+button {
+  color: $textColor;
+  @include transBac($themeWhite);
+  font-family: inherit !important;
+  cursor: pointer;
+  @include outline($borderColor);
+  box-shadow: none;
+  border: unset;
+  @include hover();
+}
+input[type="submit"] {
+  font-family: inherit !important;
+  cursor: pointer;
+  color: $textColor;
+  @include simpleBac($themeWhite);
+  @include outline($borderColor);
+  @include hover();
+}
+.user {
+  @include flexCenter();
+  justify-content: space-around;
+}
+.none {
+  display: none;
+}
+h2 {
+  color: $textColor;
+  display: inline-block;
+}
+h4 {
+  color: $textColor;
+}
+.profile {
+  @include transBac($mainColor);
+  border-style: solid;
+  border-width: 2px;
+  border-color: $borderColor;
+  border-top: none;
+  left: 10%;
+  width: 80%;
+  position: relative;
+  h2 {
+    font-size: 45px;
+    margin-left: 20px;
+    line-height: 0;
+  }
+}
+.userFlex {
+  @include flexCenter();
+  padding: 7px;
+  img {
+    height: 100px;
+    outline: 1px solid black;
+  }
+}
+.bio {
+  margin: 5px;
+  textarea {
+    min-height: 50px;
+  }
+  & > button {
+    position: absolute;
+    top: 10px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .navMain {
+    display: flex;
+    a {
+      width: 80px;
+    }
+    .userbar {
+      margin-right: 10px;
+      .userNav {
+        margin: 10px;
+      }
+      a {
+        margin: 0;
+      }
+    }
+  }
+  .settings {
+    @include flexCenter();
+    top: 50px;
+    right: -50px;
+    width: 50%;
+  }
+  .settingsMenu:focus-within .settings {
+    opacity: 1;
+    right: 10px;
+    top: 50px;
+  }
+  .container {
+    margin: 0;
+    width: -webkit-fill-available;
+  }
+  .profile {
+    width: -webkit-fill-available;
+    left: 0;
+  }
+}
+.toggle {
+  user-select: none;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-evenly;
+  P {
+    margin: 0;
+    width: 40%;
+  }
+  div {
+    position: relative;
+    transition: 0.1s;
+    width: 30px;
+    height: 10px;
+    &:hover {
+      @include simpleBac($themeWhite);
+      @include outline($borderColor);
+    }
+  }
+  input{
+    display: none;
+  }
+  span {
+    transition: 0.1s;
+    left: 0;
+    @include simpleBac($additionalColor);
+    @include outline($borderColor);
+    position: absolute;
+    padding: 4px;
+    width: 10px;
+    height: 10px;
+  }
+  div:has(input:checked) span {
+    left: 13px;
+  }
+}

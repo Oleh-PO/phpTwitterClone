@@ -1,0 +1,125 @@
+:root {
+  --mainColor: #777eaf;
+  --additionalColor: #af777e;
+  --borderColor: #613f43;
+  --themeWhite: #ffffff;
+  --textColor: #000000;
+  --errorRed: #c60d3b;
+}
+
+body {
+  margin: 0;
+  background: var(--mainColor);
+  color: var(--textColor) !important;
+  font-family: unset;
+  font-family: "Fira Sans", sans-serif !important;
+  font-weight: 300;
+  font-style: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
+
+.navMain {
+  background: var(--additionalColor);
+  position: fixed;
+  right: 0;
+  min-width: min-content;
+  width: 15%;
+  min-height: min-content;
+  padding: 5px;
+}
+.navMain a {
+  text-align: center;
+  width: 60%;
+  height: 70%;
+  min-width: min-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navMain a * {
+  margin: 5px;
+}
+.navMain button {
+  height: 100%;
+  width: 100%;
+}
+
+.bar {
+  background: color(from var(--mainColor) srgb r g b/0.77);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+}
+.bar img {
+  height: 30px;
+}
+
+.navSearch {
+  height: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.searchInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 20%;
+  min-width: min-content;
+}
+
+.userNav {
+  height: 75% !important;
+  background: var(--themeWhite);
+  outline: solid 1px var(--borderColor);
+  border-radius: 5px;
+}
+.userNav:hover {
+  background: var(--themeWhite);
+  outline: none;
+}
+
+.settings {
+  width: -webkit-fill-available;
+  position: absolute;
+  top: 120px;
+  opacity: 0;
+  z-index: 9;
+  transition: 0.1s;
+}
+.settings div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  background: var(--themeWhite);
+  outline: solid 1px var(--borderColor);
+  border-radius: 5px;
+  width: -webkit-fill-available;
+  margin: 5px;
+}
+.settings div:hover {
+  background: var(--themeWhite);
+  outline: none;
+}
+.settings div > * {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  width: -webkit-fill-available;
+  text-align: center;
+  padding: 3px;
+  margin: 0;
+}
+
+.settingsMenu:focus-within .settings {
+  opacity: 1;
+  top: 200px;
+}

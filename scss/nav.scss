@@ -1,0 +1,79 @@
+@use 'init' as *;
+.navMain {
+  @include simpleBac($additionalColor);
+  position: fixed;
+  right: 0;
+  min-width: min-content;
+  width: 15%;
+  min-height: min-content;
+  padding: 5px;
+  a {
+    text-align: center;
+    width: 60%;
+    height: 70%;
+    min-width: min-content;
+    @include flexCenter();
+    * {
+      margin: 5px;
+    }
+  }
+  button {
+    height: 100%;
+    width: 100%;
+  }
+}
+.bar {
+  @include transBac($mainColor);
+  @include flexCenter();
+  height: 45px;
+  img {
+    height: 30px;
+  }
+}
+.navSearch {
+  height: 0;
+  position: fixed;
+  width: 100%;
+}
+.searchInput {
+  @include flexCenter();
+  margin: auto;
+  width: 20%;
+  min-width: min-content;
+}
+.userNav {
+  height: 75% !important;
+  @include simpleBac($themeWhite);
+  @include outline($borderColor);
+  @include hover();
+}
+.settings {
+  width: -webkit-fill-available;
+  position: absolute;
+  top: 120px;
+  opacity: 0;
+  z-index: 9;
+  transition: 0.1s;
+  div {
+    @include flexCenter();
+    justify-content: space-evenly;
+    @include simpleBac($themeWhite);
+    @include outline($borderColor);
+    @include hover();
+    width: -webkit-fill-available;
+    margin: 5px;
+    & > * {
+      cursor: pointer;
+      display: block;
+      height: 100%;
+      width: -webkit-fill-available;
+      text-align: center;
+      padding: 3px;
+      margin: 0;
+    }
+  }
+}
+.settingsMenu:focus-within .settings {
+  opacity: 1;
+  top: 200px;
+}

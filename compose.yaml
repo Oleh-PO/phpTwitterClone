@@ -1,0 +1,31 @@
+services:
+  php:
+    build:
+      context: .
+    ports:
+      - 8080:80
+    environment:
+      - DB_PASSWORD=test
+      - DB_HOST=db
+      - DB_NAME=phpmytwitter
+      - DB_USER=root
+    develop:
+      watch:
+        - action: sync
+          path: ./public
+          target: /var/www/html
+          ignore:
+            - node_modules/
+  db:
+    image: mysql:latest
+    restart: always
+    user: root
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=phpmytwitter
+    expose:
+      - 3306
+volumes:
+  db-data:

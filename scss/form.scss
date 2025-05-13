@@ -1,0 +1,52 @@
+@use 'init' as *;
+
+html {
+	display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: color(from $mainColor srgb r g b / 0.77);
+}
+form {
+	padding: 10px;
+	@include simpleBac($additionalColor);
+	@include outline($borderColor);
+	margin: 0;
+}
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+	input {
+		@include outline($borderColor);
+		@include simpleBac($themeWhite);
+		@include hover();
+		color: $textColor;
+		margin: 3px;
+		display: block;
+	}
+}
+div:not(.inputDiv) {
+	margin-top: 10px;
+}
+a {
+	padding: 5px;
+	margin: 5px;
+	@include simpleBac($themeWhite);
+  @include outline($borderColor);
+  @include hover();
+}
+.inputDiv{
+	display: flex;
+}
+.invalid::after {
+	content: "*";
+	color: $errorRed;
+}
+span {
+	color: $errorRed;
+}

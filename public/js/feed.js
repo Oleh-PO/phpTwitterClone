@@ -10,33 +10,36 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	changeOrder = function() {//chang list order(new > old)
 		postContainer.innerHTML = "";
+		document.querySelector(".sortButton").classList.toggle("sortTrue");
 
 		order = !order;
 		ty 		= 0;
-
-		loadPost();
-		ty++;
 	}
 
-	loadPost = function() {
-		const xhttp = new XMLHttpRequest();
-		xhttp.onload = function() {
-			postContainer.innerHTML += xhttp.response;
-			ty++;
-		}
+	loadPost = function(entries) {
+		if (entries[0].isIntersecting) {
+			const xhttp = new XMLHttpRequest();
 
-		xhttp.open("GET", "/php/feed.php/?offset="+ty+"&order="+order+"&"+user);
-		xhttp.send(); //ajax recuest to feed.php, respond whit post. chang post via postTemplate.php
+			xhttp.onload = function() {
+				if (xhttp.response) {
+					postContainer.innerHTML += xhttp.response;
+					ty++;
+				}
+			}
+
+			xhttp.open("GET", "/php/feed.php/?offset="+ty+"&order="+order+"&"+userId);
+			xhttp.send(); //ajax recuest to feed.php, respond whit post. chang post via postTemplate.php
+		}
 	}
 
 	const options = {
 		root: null,
 		rootMargin: "0px",
-		threshold: 1.0,
+		threshold: 1,
 	};
 
 	const observer = new IntersectionObserver(loadPost, options);
 
-	observer.observe(document.querySelector(".bottom"));
-	document.documentElement.scrollTop = 0;//observer thet fires when scrold to bottom, load new posts
+	observer.observe(document.querySelector(".bottom"));//observer fires when scrold to bottom -> load new posts
+	document.documentElement.scrollTop = 0;
 });

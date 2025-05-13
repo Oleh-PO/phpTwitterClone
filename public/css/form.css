@@ -1,5 +1,45 @@
+:root {
+  --mainColor: #777eaf;
+  --additionalColor: #af777e;
+  --borderColor: #613f43;
+  --themeWhite: #ffffff;
+  --textColor: #000000;
+  --errorRed: #c60d3b;
+}
+
+body {
+  margin: 0;
+  background: var(--mainColor);
+  color: var(--textColor) !important;
+  font-family: unset;
+  font-family: "Fira Sans", sans-serif !important;
+  font-weight: 300;
+  font-style: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
+
+html {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: color(from var(--mainColor) srgb r g b/0.77);
+}
+
 form {
-  outline: 1px solid green;
+  padding: 10px;
+  background: var(--additionalColor);
+  outline: solid 1px var(--borderColor);
+  border-radius: 5px;
   margin: 0;
 }
 
@@ -9,8 +49,43 @@ form {
   flex-direction: column;
 }
 .form input {
-  margin: 5px;
+  outline: solid 1px var(--borderColor);
+  border-radius: 5px;
+  background: var(--themeWhite);
+  color: var(--textColor);
+  margin: 3px;
   display: block;
 }
+.form input:hover {
+  background: var(--themeWhite);
+  outline: none;
+}
 
-/*# sourceMappingURL=form.css.map */
+div:not(.inputDiv) {
+  margin-top: 10px;
+}
+
+a {
+  padding: 5px;
+  margin: 5px;
+  background: var(--themeWhite);
+  outline: solid 1px var(--borderColor);
+  border-radius: 5px;
+}
+a:hover {
+  background: var(--themeWhite);
+  outline: none;
+}
+
+.inputDiv {
+  display: flex;
+}
+
+.invalid::after {
+  content: "*";
+  color: var(--errorRed);
+}
+
+span {
+  color: var(--errorRed);
+}

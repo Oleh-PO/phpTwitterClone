@@ -1,10 +1,14 @@
-<?php //universal sql connection 
-	$servername = "mySQL-8.2";
+<?php //mySQL connection
+function sqlInit() {
+	$servername = "phptwitter-db-1";
 	$username   = "root";
-	$password   = "";
+	$password   = "test";
 	$dbname     = "phpmytwitter";
+
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
+
 	if (!$conn) {
 	  die("Connection failed: " . mysqli_connect_error());
 	}
 	return $conn;
+}
