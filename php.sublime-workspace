@@ -1,0 +1,208 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"g",
+				"gulp"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"gir",
+				"Gitignore: New gitignore"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 160.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/oleh/Desktop/phpTwitter"
+	],
+	"file_history":
+	[
+		"/home/oleh/Desktop/phpTwitter/gulpfile.js",
+		"/home/oleh/Desktop/phpTwitter/scss/container.scss",
+		"/home/oleh/Desktop/phpTwitter/.gitignore",
+		"/home/oleh/Desktop/phpTwitter/package.json",
+		"/home/oleh/Desktop/phpTwitter/public/css/container.css",
+		"/home/oleh/Desktop/phpTwitter/Dockerfile",
+		"/home/oleh/Desktop/phpTwitter/compose.yaml",
+		"/home/oleh/Desktop/phpTwitter/public/index.php",
+		"/home/oleh/Desktop/phpTwitter/scss/init.scss",
+		"/home/oleh/Desktop/phpTwitter/scss/form.scss",
+		"/home/oleh/Desktop/phpTwitter/.dockerignore",
+		"/home/oleh/Desktop/phpTwitter/public/php/sql.php",
+		"/home/oleh/Desktop/phpTwitter/dockerignore",
+		"/home/oleh/Desktop/phpTwitter/dockerfile",
+		"/home/oleh/Desktop/phpTwitter/scss/style.scss",
+		"/home/oleh/Desktop/phpTwitter/public/css/style.css",
+		"/home/oleh/Desktop/phpTwitter/public/css/form.css",
+		"/home/oleh/Desktop/phpTwitter/public/php/isOwner.php",
+		"/home/oleh/Desktop/phpTwitter/public/html/nav.php",
+		"/home/oleh/Desktop/gulpTest/gulpfile.js",
+		"/home/oleh/Desktop/gulpTest/.gitignore",
+		"/home/oleh/Desktop/gulpTest/package.json",
+		"/home/oleh/Desktop/gulpTest/package-lock.json",
+		"/home/oleh/Downloads/node-v22.15.0-linux-x64/CHANGELOG.md",
+		"/home/oleh/.ssh/id_ed25519.pub"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"textarea"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 44.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "php.sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 217.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

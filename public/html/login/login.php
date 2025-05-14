@@ -1,41 +1,8 @@
 <?php 
 	require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
-	require $_SERVER['DOCUMENT_ROOT'] . "/html/login/loginFun.php";
-	init();
-
-	$passwordError = false;
-	$loginError 	 = false;
-	$login 				 = false;
-	$password 		 = false;
-
-	if ($_SERVER['REQUEST_METHOD'] === "POST") {
-		$login    = $_POST["login"];
-		$password = $_POST["password"];
-
-		$sql = "
-			SELECT id, password, login FROM Users
-			WHERE login = '$login' OR email = '$login';
-		";
-
-		$result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
-
-		if($result > 0) {
-			if (password_verify($password, $result["password"])) {
-
-				$_SESSION["id"] 			= $result["id"];
-				$_SESSION["username"] = $result["login"];//start session
-
-				header("Location: /");
-				exit();
-			}
-			$error = "passwordIncorrect";
-			$passwordError = true;
-		} else {
-			$error = "loginMissing";
-			$loginError = true;
-		}
-		close();
-	}
+	require $_SERVER['DOCUMENT_ROOT'] . "/php/log.php";
+	$user->init();
+	start();
 ?>
 
 <!DOCTYPE html>

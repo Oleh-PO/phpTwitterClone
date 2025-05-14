@@ -1,14 +1,27 @@
 <?php //mySQL connection
-function sqlInit() {
-	$servername = "phptwitter-db-1";
-	$username   = "root";
-	$password   = "test";
-	$dbname     = "phpmytwitter";
 
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
+class Sql
+{
+	private $servername;
+	private $username;
+	private $password;
+	private $dbname;
 
-	if (!$conn) {
-	  die("Connection failed: " . mysqli_connect_error());
+	public function __construct($servername, $username, $password, $dbname) {
+		$this->servername = $servername;
+		 $this->username = $username;
+		 $this->password = $password;
+		 $this->dbname = $dbname;
 	}
-	return $conn;
+
+	public function sqlInit() {
+
+		$conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+
+		if ($conn->connect_error) {
+		  die("Connection failed: " . $conn->connect_error);
+		}
+		return $conn;
+	}
 }
+$mySql = new sql("phptwitter-db-1", "root", "test", "phpmytwitter");

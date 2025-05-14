@@ -1,7 +1,7 @@
 <?php
 
 require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
-init();
+$user->init();
 
 $many 	= 8;
 $offset = intval($_GET['offset']);
@@ -17,12 +17,12 @@ if ($order) {
 	$sort = "DESC";
 }
 
-if ($userId) {//filters post, so user cant see his own posts
-	$userSort = "WHERE Users.id !=".$userId;
+if ($user->userId) {//filters post, so user cant see his own posts
+	$userSort = "WHERE Users.id !=".$user->userId;
 }
 
-if ($getUserId) {//-> only show post from user on users page
-	$userSort = "WHERE Users.id =".$getUserId;
+if ($user->getUserId) {//-> only show post from user on users page
+	$userSort = "WHERE Users.id =".$user->getUserId;
 }
 
 $sql = "
@@ -35,11 +35,10 @@ $sql = "
 	LIMIT $upd, $many;
 ";
 
-$result = mysqli_query($conn, $sql);
+$result = $conn->query($sql);
 
-if (mysqli_num_rows($result) > 0) {
+if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 		require $_SERVER['DOCUMENT_ROOT']."/html/postTemplate.php";
 	}
 }
-close();

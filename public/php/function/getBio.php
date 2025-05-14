@@ -1,9 +1,9 @@
 <?php
 function getBio() {
-  global $conn, $getUserId;
+  global $conn;
   $sql = "
     SELECT bio FROM Users
-    WHERE id = '$getUserId';
+    WHERE id = '$user->getUserId';
   ";
 
   $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));

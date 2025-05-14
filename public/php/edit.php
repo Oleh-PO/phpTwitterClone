@@ -2,7 +2,7 @@
 if (isset($_POST)) {
 	require $_SERVER['DOCUMENT_ROOT'] . "/php/isOwner.php";
 	require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
-	init();
+	$user->init();
 
 	$body	 = json_decode(file_get_contents('php://input'));
 	$id 	 = $body -> id;
@@ -27,7 +27,7 @@ if (isset($_POST)) {
 			WHERE	id = $userId;
 		";
 
-		if (!mysqli_query($conn, $sql)) {
+		if (!$conn->query($sql)) {
 			die("wrong user");
 		}
 
@@ -37,6 +37,6 @@ if (isset($_POST)) {
 		";
 	}
 
-	mysqli_query($conn, $sql);
+	$conn->query($sql);
 	close();
 }

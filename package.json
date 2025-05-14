@@ -6,6 +6,8 @@
   "scripts": {
     "build": "gulp",
     "postbuild": "docker compose up --build",
+    "docker": "docker compose up --watch",
+    "style": "gulp watch"
   },
   "repository": {
     "type": "git",

@@ -1,46 +1,8 @@
 <?php
 	require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
-	require $_SERVER['DOCUMENT_ROOT'] . "/html/login/loginFun.php";
-	init();
-
-	$login    = false;
-	$email    = false;
-	$password = false;
-	$passcon  = false;
-
-  if ($_SERVER['REQUEST_METHOD'] === "POST") { //validate form
-		$login    = $_POST["login"];
-		$email    = $_POST["email"];
-		$password = $_POST["password"];
-		$passcon  = $_POST["passCon"];
-
-		if (validation()) {
-
-			$sql = "
-				INSERT INTO Users (login, email, password)
-				VALUES ('$login', '$email', '$hash');
-			";
-
-			if (mysqli_query($conn, $sql)) {
-
-				$sql = "
-					SELECT id FROM Users
-					WHERE login = '$login';
-	      ";
-
-	      $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
-
-				$_SESSION["id"] 			= $result["id"];
-				$_SESSION["username"] = $login;//start session
-
-				header("Location:/");
-				exit();
-			} else {
-				var_dump("error");
-			}
-		}
-  }
-  mysqli_close($conn);
+	require $_SERVER['DOCUMENT_ROOT'] . "/php/log.php";
+	$user->init();
+	startS();
 ?>
 
 <!DOCTYPE html>

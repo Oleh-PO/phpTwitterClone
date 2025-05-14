@@ -1,15 +1,15 @@
 <?php
 function pullPost() {
-  global $conn, $postId, $userId;
+  global $conn;
   $sql = "
     SELECT login, content, date, Users.id as user_id, Posts.id
     FROM Posts
     INNER JOIN Users
     ON Posts.user_id = Users.id
-    WHERE Posts.id = $postId;
+    WHERE Posts.id = $user->postId;
   ";
 
-  $row = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+  $row = $conn->query($sql)->fetch_assoc();
 
   require $_SERVER['DOCUMENT_ROOT']."/html/postTemplate.php";
 }
