@@ -1,5 +1,9 @@
 const copy = function(link) {
-	navigator.clipboard.writeText(link); //copy in clipboard
+	if (window.location.protocol === 'https:') {
+		navigator.clipboard.writeText(link); //copy in clipboard
+	} else {
+		alert("use https!");
+	}
 };
 
 const edit = function(p) { //edit switch

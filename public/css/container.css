@@ -28,7 +28,6 @@ a {
   position: relative;
   background: color(from var(--mainColor) srgb r g b/0.77);
   margin: auto;
-  width: 60%;
 }
 
 .post {

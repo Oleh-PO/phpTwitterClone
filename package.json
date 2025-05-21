@@ -7,7 +7,7 @@
     "build": "gulp",
     "postbuild": "docker compose up --build",
     "docker": "docker compose up --watch",
-    "style": "gulp watch"
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Oleh-PO/phpTwitterClone#readme",
   "devDependencies": {
     "gulp": "^5.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-sass": "^6.0.1",
     "sass": "^1.87.0"
   }

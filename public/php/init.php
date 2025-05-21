@@ -1,15 +1,26 @@
 <?php
 
-class User
+$files = glob($_SERVER['DOCUMENT_ROOT'] . "/php/function/*.php");
+
+foreach ($files as $file) {
+  require_once($file);
+}
+
+
+class Init
 {
+
+  use createPost, https, getBio, isOwner, pullPost;
+
   public $userId       = false;
   public $userName     = false;
   public $getUserId    = false;
   public $getUserName  = false;
   public $postId       = false;
 
-  public function init() {
+  public function __construct() {
     global $conn;
+
     require_once $_SERVER['DOCUMENT_ROOT'] . "/php/sql.php";//connects to mysql via sql.php file
 
     session_start();
@@ -47,12 +58,15 @@ class User
       }
     }
   }
-  public function connect() {
-    require $_SERVER['DOCUMENT_ROOT'] . "/php/function/https.php";
-    require $_SERVER['DOCUMENT_ROOT'] . "/php/post.php";
-    require $_SERVER['DOCUMENT_ROOT'] . "/php/function/getBio.php";
-    require $_SERVER['DOCUMENT_ROOT'] . "/php/function/pullPost.php";
-    $this->init();
+
+  public function jsInit() {
+    if ($this->getUserId) {
+      echo "userId = 'user=$this->getUserId;'";
+    } else {
+      echo "userId = false;";
+    }
+    if (isset($_COOKIE['toggleTheme'])) {
+      echo "toggleTheme(".$_COOKIE['toggleTheme'].");";
+    }
   }
 }
-$user = new user;

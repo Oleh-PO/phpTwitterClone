@@ -40,6 +40,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	const observer = new IntersectionObserver(loadPost, options);
 
-	observer.observe(document.querySelector(".bottom"));//observer fires when scrold to bottom -> load new posts
+	// observer.observe(document.querySelector(".bottom"));//observer fires when scrold to bottom -> load new posts
 	document.documentElement.scrollTop = 0;
 });

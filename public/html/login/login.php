@@ -1,8 +1,7 @@
 <?php 
-	require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
 	require $_SERVER['DOCUMENT_ROOT'] . "/php/log.php";
-	$user->init();
-	start();
+	$test = new Log;
+	$test->logIn();
 ?>
 
 <!DOCTYPE html>
@@ -12,25 +11,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>LOG IN</title>
 	<link rel="stylesheet" type="text/css" href="/css/form.css">
-	<script type="text/javascript" src="/js/theme.js"></script>
-	<script type="text/javascript">
-		<?php if (isset($_COOKIE['toggleTheme'])): ?>
-			toggleTheme(<?php echo $_COOKIE['toggleTheme'] ?>);
-		<?php endif; ?>
-	</script>
+	<script type="text/javascript" src="/js/main.js"></script>
+	<script type="text/javascript"><?php $test->jsInit(); ?></script>
 </head>
 <body>
 	<div class="form"> 
 		<form method="POST"> LOG IN
-			<div class="inputDiv <?php invalidTest($loginError); ?>">
-				<input required minlength="1" maxlength="31" placeholder="login or email" autocomplete="username" type="text" id="login" name="login" <?php formTest($login); ?>>
+			<div class="inputDiv <?php $test->invalidTest($test->loginError); ?>">
+				<input required minlength="1" maxlength="31" placeholder="login or email" autocomplete="username" type="text" id="login" name="login" <?php $test->formTest($test->login); ?>>
 			</div>
-			<div class="inputDiv <?php invalidTest($passwordError); ?>">
-				<input required minlength="7" maxlength="15" placeholder="password" autocomplete="current-password" type="password" name="password" id="password" <?php formTest($password); ?>>
+			<div class="inputDiv <?php $test->invalidTest($test->passwordError); ?>">
+				<input required minlength="7" maxlength="15" placeholder="password" autocomplete="current-password" type="password" name="password" id="password" <?php $test->formTest($test->password); ?>>
 			</div>
 			<input type="submit">
-			<?php if (isset($error)): ?>
-				<span><?php echo $errorMessage[$error]; ?></span>
+			<?php if (isset($test->error)): ?>
+				<span><?php echo ($test->getErrorMessage($test->error)); ?></span>
 			<?php endif; ?>
 		</form>
 		<div>

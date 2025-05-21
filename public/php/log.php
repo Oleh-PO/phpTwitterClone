@@ -1,138 +1,153 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
 
-$errorMessage = array(
-  "passwordIncorrect"=>"Password incorrect",
-  "loginMissing"=>"Nickname or email is missing",
-  "nicknameTaken"=>"Nickname is already taken",
-  "emailTaken"=>"Email is already registered",
-  "passwordIncorrect"=>"Password must be between 8 and 16 characters",
-  "passwordNotMatch"=>"Passwords not match"
-);
 
-function invalidTest($test) {
-  if ($test) {
-    echo "invalid";
+class Log extends Init
+{
+  public $error;
+
+  public $login    = false;
+  public $email    = false;
+  public $password = false;
+  public $passcon  = false;
+
+  public $passwordError = false;
+  public $loginError    = false;
+  public $confirmError  = true;
+
+
+  private $errorMessage = array(
+      "passwordIncorrect"=>"Password incorrect",
+      "loginMissing"=>"Nickname or email is missing",
+      "nicknameTaken"=>"Nickname is already taken",
+      "emailTaken"=>"Email is already registered",
+      "passwordIncorrect"=>"Password must be between 8 and 16 characters",
+      "passwordNotMatch"=>"Passwords not match"
+    );
+
+  public function getErrorMessage($message) {
+    return $this->errorMessage[$message];
   }
-}
-function formTest($test) {
-  if ($test) {
-    echo "value='$test'";
-  }
-}
-function validInput($input, $type, ) { //test for uniqueness
-  global $conn;
-  $length = strlen($input);
 
-  if ($length > 0 && $length < 31) {
-    $sql = "
-      SELECT $type FROM Users
-      WHERE $type = '$input';
-    ";
-    $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
-    return !is_array($result);
-  }
-}
-
-function validation() {
-  global $login, $email, $password, $passcon, $error, $loginError, $emailError, $passwordError, $confirmError;
-
-  if (!validInput($login, "login")) {
-    $error = "nicknameTaken";
-    $loginError = true;
-    return;
-  }
-  if (!validInput($email, "email")) {
-    $error = "emailTaken";
-    $emailError = true;
-    return;
-  }
-  if (strlen($password) < 8 && strlen($password) > 16) {
-    $error = "passwordIncorrect";
-    $passwordError = true;
-    return;
-  }
-  if ($password !== $passcon) {
-    $error = "passwordNotMatch";
-    $passwordError = true;
-    $confirmError  = true;
-    return;
-  }
-  return true;
-}
-
-function start() {
-  global $passwordError, $loginError, $login, $password, $conn;
-  $passwordError = false;
-  $loginError    = false;
-  $login         = false;
-  $password      = false;
-
-  if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $login    = $_POST["login"];
-    $password = $_POST["password"];
-
-    $sql = "
-      SELECT id, password, login FROM Users
-      WHERE login = '$login' OR email = '$login';
-    ";
-
-    $result = $conn->query($sql)->fetch_assoc();
-
-    if($result > 0) {
-      if (password_verify($password, $result["password"])) {
-
-        $_SESSION["id"]       = $result["id"];
-        $_SESSION["username"] = $result["login"];//start session
-
-        header("Location: /");
-        exit();
-      }
-      $error = "passwordIncorrect";
-      $passwordError = true;
-    } else {
-      $error = "loginMissing";
-      $loginError = true;
+  public function invalidTest($test) {
+    if ($test) {
+      echo "invalid";
     }
   }
-}
-function startS() {
-  global $login, $email, $password, $passcon, $conn;
-  $login    = false;
-  $email    = false;
-  $password = false;
-  $passcon  = false;
+  public function formTest($test) {
+    if ($test) {
+      echo "value='$test'";
+    }
+  }
+  public function validInput($input, $type, ) { //test for uniqueness
+    global $conn;
+    $length = strlen($input);
 
-  if ($_SERVER['REQUEST_METHOD'] === "POST") { //validate form
-    $login    = $_POST["login"];
-    $email    = $_POST["email"];
-    $password = $_POST["password"];
-    $passcon  = $_POST["passCon"];
+    if ($length > 0 && $length < 31) {
+      $sql = "
+        SELECT $type FROM Users
+        WHERE $type = '$input';
+      ";
+      $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+      return !is_array($result);
+    }
+  }
 
-    if (validation()) {
+  public function validation() {
+
+    if (!$this->validInput($this->login, "login")) {
+      $this->error = "nicknameTaken";
+      $this->loginError = true;
+      return;
+    }
+    if (!$this->validInput($this->email, "email")) {
+      $this->error = "emailTaken";
+      $this->emailError = true;
+      return;
+    }
+    if (strlen($this->password) < 8 && strlen($this->password) > 16) {
+      $this->error = "passwordIncorrect";
+      $this->passwordError = true;
+      return;
+    }
+    if ($this->password !== $this->passcon) {
+      $this->error = "passwordNotMatch";
+      $this->passwordError = true;
+      $this->confirmError  = true;
+      return;
+    }
+    return true;
+  }
+
+  public function logIn() {
+    global $conn;
+
+    if ($_SERVER['REQUEST_METHOD'] === "POST") {
+      $this->login    = $_POST["login"];
+      $this->password = $_POST["password"];
 
       $sql = "
-        INSERT INTO Users (login, email, password)
-        VALUES ('$login', '$email', '$hash');
+        SELECT id, password, login FROM Users
+        WHERE login = '$this->login' OR email = '$this->login';
       ";
 
-      if (mysqli_query($conn, $sql)) {
+      $result = $conn->query($sql)->fetch_assoc();
 
-        $sql = "
-          SELECT id FROM Users
-          WHERE login = '$login';
-        ";
+      var_dump($result);
 
-        $result = $conn->query($sql)->fetch_assoc();
+      if($result > 0) {
+        if (password_verify($this->password, $result["password"])) {
 
-        $_SESSION["id"]       = $result["id"];
-        $_SESSION["username"] = $login;//start session
+          $_SESSION["id"]       = $result["id"];
+          $_SESSION["username"] = $result["login"];//start session
 
-        header("Location:/");
-        exit();
+          header("Location: /");
+          exit();
+        }
+        $this->error = "passwordIncorrect";
+        $this->passwordError = true;
       } else {
-        echo("error");
+        $this->error = "loginMissing";
+        $this->loginError = true;
       }
     }
   }
-  mysqli_close($conn);
+  public function singIn() {
+    global $conn;
+
+    if ($_SERVER['REQUEST_METHOD'] === "POST") { //validate form
+      $this->login    = $_POST["login"];
+      $this->email    = $_POST["email"];
+      $this->password = $_POST["password"];
+      $this->passcon  = $_POST["passCon"];
+
+      if ($this->validation()) {
+        $hash = password_hash($this->password, PASSWORD_DEFAULT);
+
+        $sql = "
+          INSERT INTO Users (login, email, password)
+          VALUES ('$this->login', '$this->email', '$hash');
+        ";
+
+        if (mysqli_query($conn, $sql)) {
+
+          $sql = "
+            SELECT id FROM Users
+            WHERE login = '$this->login';
+          ";
+
+          $result = $conn->query($sql)->fetch_assoc();
+
+          $_SESSION["id"]       = $result["id"];
+          $_SESSION["username"] = $this->login;//start session
+
+          header("Location:/");
+          exit();
+        } else {
+          echo("error");
+        }
+      }
+    }
+    mysqli_close($conn);
+  }
 }

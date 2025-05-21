@@ -1,8 +1,8 @@
 <?php
 	require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
-	$user = new user;
-	$user->connect();//initiating a session and mySQL
-	// https();
+	$user = new init;//initiating a session and mySQL
+
+	// $user->https();
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,18 +14,8 @@
 		<?php	echo "twitter";	?>
 	</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="js/theme.js"></script>
-		<script type="text/javascript">
-			let userId = false;
-			<?php if ($user->getUserId): ?>
-				userId = "user=<?php echo $user->getUserId ?>";
-			<?php endif; ?>
-			<?php if (isset($_COOKIE['toggleTheme'])): ?>
-				toggleTheme(<?php echo $_COOKIE['toggleTheme'] ?>);
-			<?php endif; ?>
-		</script>
-	<script type="text/javascript" src="js/feed.js"></script>
-	<script type="text/javascript" src="js/fileMeneger.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript"><?php $user->jsInit(); ?></script>
 </head>
 <body>
 	<nav>
@@ -34,7 +24,7 @@
 	<main>
 		<?php if ($user->getUserId) {require 'html/profile.php';} ?><!-- adding profile-->
 		<div class="container">
-			<?php if ($user->userId) {createPost();} ?><!-- adding create post menu -->
+			<?php if ($user->userId) {$user->createPost();} ?> <!-- adding create post menu -->
 			<div onclick="changeOrder()" class="sort">
 				<button class="sortButton" id="checkbox">sort</button><!--△▽-->
 			</div>
@@ -42,7 +32,7 @@
 				<?php
 					if ($user->postId) {
 						//test for GET "post" if true puts additional template
-						pullPost();
+						$user->pullPost();
 					}
 				?>
 			</div>
