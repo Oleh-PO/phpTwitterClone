@@ -2,14 +2,12 @@
 
 trait getBio {
   function getBio() {
-    global $conn;
-
     $sql = "
       SELECT bio FROM Users
-      WHERE id = '$user->getUserId';
+      WHERE id = '$this->getUserId';
     ";
 
-    $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+    $result = $this->conn->query($sql)->fetch_assoc();
 
     if ($result["bio"]) { //get user bio from mySQL
       return $result["bio"];

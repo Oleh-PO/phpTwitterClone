@@ -1,10 +1,9 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/php/class/init.php";
 
 
-class Feed extends Init
-{
+class Feed extends Init {
 	private $many;
 	private $upd;
 	private $offset;
@@ -12,12 +11,11 @@ class Feed extends Init
 	private $sort;
 
 	private $userSort 		= "";
-	private $userSettings = "";
+
 
 	function __construct($amount, $offset, $order) {
 		parent::__construct();
 
-		global $conn;
 
 		$this->many 	= $amount;
 		$this->offset = $offset;
@@ -49,13 +47,12 @@ class Feed extends Init
 			LIMIT $this->upd, $this->many;
 		";
 
-		$result = $conn->query($sql);
+		$result = $this->conn->query($sql);
 
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
-				require $_SERVER['DOCUMENT_ROOT']."/html/postTemplate.php";
+				$this->pullPost($row["id"]);
 			}
 		}
 	}
 }
-$feed = new feed(8, intval($_GET['offset']), filter_var($_GET['order'], FILTER_VALIDATE_BOOLEAN));

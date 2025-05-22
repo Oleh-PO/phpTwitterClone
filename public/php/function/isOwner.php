@@ -2,12 +2,12 @@
 
 trait isOwner {
 	function isOwner() {
-		global $id, $conn;
 		$sql = "
 			SELECT user_id FROM Posts
-			WHERE	id = $id;
+			WHERE	id = $this->id;
 		";
-		if ($result = $conn->query($sql)->fetch_assoc()["user_id"] === $user->userId) {
+
+		if ($result = $this->conn->query($sql)->fetch_assoc()["user_id"] === $this->userId) {
 			return true;
 		}
 		return false;

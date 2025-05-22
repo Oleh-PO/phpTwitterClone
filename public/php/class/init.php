@@ -7,24 +7,25 @@ foreach ($files as $file) {
 }
 
 
-class Init
-{
+class Init {
 
   use createPost, https, getBio, isOwner, pullPost;
 
-  public $userId       = false;
-  public $userName     = false;
-  public $getUserId    = false;
-  public $getUserName  = false;
-  public $postId       = false;
+  public $userId;
+  public $userName;
+  public $getUserId;
+  public $getUserName;
+  public $postId;
+
+  protected $conn;
 
   public function __construct() {
-    global $conn;
 
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/php/sql.php";//connects to mysql via sql.php file
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/php/class/sql.php";//connects to mysql via sql.php file
 
     session_start();
-    $conn = $mySql->sqlInit();
+    $mySql = new sql("phptwitter-db-1", "root", "test", "phpmytwitter");
+    $this->conn = $mySql->sqlInit();
 
     if (isset($_SESSION['id'])) {//get data from session
       $this->userId = $_SESSION['id'];
@@ -38,7 +39,7 @@ class Init
         WHERE id = $this->getUserId
       ";
 
-      $result = $conn->query($sql)->fetch_assoc();
+      $result = $this->conn->query($sql)->fetch_assoc();
 
       if (!$result) {
         die("user ($this->getUserId) not found :(");
@@ -53,15 +54,19 @@ class Init
         SELECT id FROM Posts
         WHERE id = '$this->postId'
       ";
-      if (!$conn->query($sql)->fetch_assoc()) {
+      if (!$this->conn->query($sql)->fetch_assoc()) {
         die("post ($this->postId) not found :(");
       }
     }
   }
 
+  public function __destruct() {
+    $this->conn->close();
+  }
+
   public function jsInit() {
     if ($this->getUserId) {
-      echo "userId = 'user=$this->getUserId;'";
+      echo "userId = 'user=$this->getUserId';";
     } else {
       echo "userId = false;";
     }

@@ -2,7 +2,6 @@
 
 trait createPost {
 	public function createPost () {
-		global $conn;
 		if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["story"])) {
 			$story = $_POST["story"];
 
@@ -12,9 +11,10 @@ trait createPost {
 					VALUES ('$this->userId', '$story', CURRENT_TIMESTAMP());
 				";
 
-				$conn->query($sql);
-				header('Location: /');
-				exit;
+				$this->conn->query($sql);
+
+				header("Location: ".$_SERVER['REQUEST_URI']);
+    		exit;
 			}
 		}
 		require $_SERVER['DOCUMENT_ROOT'] . "/html/createPost.html";

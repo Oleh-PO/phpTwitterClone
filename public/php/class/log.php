@@ -1,9 +1,8 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/php/init.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/php/class/init.php";
 
 
-class Log extends Init
-{
+class Log extends Init {
   public $error;
 
   public $login    = false;
@@ -21,7 +20,8 @@ class Log extends Init
       "loginMissing"=>"Nickname or email is missing",
       "nicknameTaken"=>"Nickname is already taken",
       "emailTaken"=>"Email is already registered",
-      "passwordIncorrect"=>"Password must be between 8 and 16 characters",
+      "passwordIncorrectLength"=>"Password must be between<br>8 and 16 characters",
+      "passwordIncorrect"=>"Password not correct",
       "passwordNotMatch"=>"Passwords not match"
     );
 
@@ -48,7 +48,7 @@ class Log extends Init
         SELECT $type FROM Users
         WHERE $type = '$input';
       ";
-      $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+      $result = $this->conn->query($sql)->fetch_assoc();
       return !is_array($result);
     }
   }
@@ -66,7 +66,7 @@ class Log extends Init
       return;
     }
     if (strlen($this->password) < 8 && strlen($this->password) > 16) {
-      $this->error = "passwordIncorrect";
+      $this->error = "passwordIncorrectLength";
       $this->passwordError = true;
       return;
     }
@@ -80,7 +80,6 @@ class Log extends Init
   }
 
   public function logIn() {
-    global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
       $this->login    = $_POST["login"];
@@ -91,9 +90,8 @@ class Log extends Init
         WHERE login = '$this->login' OR email = '$this->login';
       ";
 
-      $result = $conn->query($sql)->fetch_assoc();
+      $result = $this->conn->query($sql)->fetch_assoc();
 
-      var_dump($result);
 
       if($result > 0) {
         if (password_verify($this->password, $result["password"])) {
@@ -113,7 +111,6 @@ class Log extends Init
     }
   }
   public function singIn() {
-    global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] === "POST") { //validate form
       $this->login    = $_POST["login"];
@@ -129,14 +126,14 @@ class Log extends Init
           VALUES ('$this->login', '$this->email', '$hash');
         ";
 
-        if (mysqli_query($conn, $sql)) {
+        if ($this->conn->query($sql)) {
 
           $sql = "
             SELECT id FROM Users
             WHERE login = '$this->login';
           ";
 
-          $result = $conn->query($sql)->fetch_assoc();
+          $result = $this->conn->query($sql)->fetch_assoc();
 
           $_SESSION["id"]       = $result["id"];
           $_SESSION["username"] = $this->login;//start session
@@ -148,6 +145,6 @@ class Log extends Init
         }
       }
     }
-    mysqli_close($conn);
+    $this->conn->close();
   }
 }

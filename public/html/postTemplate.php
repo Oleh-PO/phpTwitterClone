@@ -1,17 +1,3 @@
-<?php
-  $userSettings = "";
-
-  $sName = $_SERVER['SERVER_NAME']."/?post=".$row['id'];
-
-  //test for owner, if ownership true -> add edit and delete buttons
-  if ($row['user_id'] === $userId) {
-    $userSettings =
-    "
-      <button onclick='edit(p".$row['id'].")'>edit</button>
-      <button onclick='deletePost(".$row['id'].")'>delete</button>
-    ";
-  }
-?>
 <div class='post'> <!-- post template -->
 	<div class='postHeader'>
 		<a href="<?php echo '/?user=' . $row['user_id']?>">

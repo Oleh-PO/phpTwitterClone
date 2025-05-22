@@ -10,7 +10,7 @@ const toggleTheme = function(toggle) {
     r.style.removeProperty('--textColor');
     r.style.removeProperty('--mainColor');
   }
-  fetch("/php/theme.php/?toggleTheme="+toggle);
+  fetch("/php/user/theme.php/?toggleTheme="+toggle);
 }
 // document.addEventListener("DOMContentLoaded", function(event) {
 //   toggleTheme(theme.checked);

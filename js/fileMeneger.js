@@ -22,7 +22,7 @@ const edit = function(p) { //edit switch
 const editRecuest = function(p) {//make fatch recuest to edit.php
 	const textData = document.querySelector("#" + p.id + " textarea").value;
 
-	fetch("/php/edit.php", {
+	fetch("/php/user/edit.php", {
 	  method: "POST",
 	  headers: {
 			"Content-Type": "application/json",
@@ -37,7 +37,7 @@ const editRecuest = function(p) {//make fatch recuest to edit.php
 };
 
 const deletePost = function(p) {
-	fetch("/php/delete.php", {
+	fetch("/php/user/delete.php", {
 	  method: "POST",
 	  headers: {
 			"Content-Type": "application/json",

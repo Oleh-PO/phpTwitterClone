@@ -1,7 +1,6 @@
 <?php //mySQL connection
 
-class Sql
-{
+class Sql {
 	private $servername;
 	private $username;
 	private $password;
@@ -24,4 +23,3 @@ class Sql
 		return $conn;
 	}
 }
-$mySql = new sql("phptwitter-db-1", "root", "test", "phpmytwitter");
