@@ -9,24 +9,24 @@
   </title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript"><?php $user->jsInit(); ?></script>
+  <script type="text/javascript"><?php $this->jsInit(); ?></script>
 </head>
 <body>
   <nav>
     <?php require 'html/nav.php'; ?> <!-- adding nav bar -->
   </nav>
   <main>
-    <?php if ($user->getUserId) {require 'html/profile.php';} ?><!-- adding profile-->
+    <?php if ($this->getUserId) {require 'html/profile.php';} ?><!-- adding profile-->
     <div class="container">
-      <?php if ($user->userId) {$user->createPost();} ?> <!-- adding create post menu -->
+      <?php if ($this->userId) {$this->createPost();} ?> <!-- adding create post menu -->
       <div onclick="changeOrder()" class="sort">
         <button class="sortButton" id="checkbox">sort</button><!--△▽-->
       </div>
       <div class="postContainer">
         <?php
-          if ($user->postId) {
+          if ($this->postId) {
             //test for GET "post" if true puts additional template
-            $user->pullPost($user->postId);
+            $this->pullPost($this->postId);
           }
         ?>
       </div>

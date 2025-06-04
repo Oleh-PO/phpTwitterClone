@@ -1,6 +1,6 @@
 <?php //mySQL connection
 
-class Sql {
+class sql {
 	private $servername;
 	private $username;
 	private $password;

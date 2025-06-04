@@ -1,8 +1,7 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/php/class/init.php";
 
 
-class Log extends Init {
+class log extends init {
   public $error;
 
   public $login    = false;

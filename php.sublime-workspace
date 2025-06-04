@@ -4,12 +4,20 @@
 		"selected_items":
 		[
 			[
-				"p",
-				"public"
+				"clas",
+				"class\tclass …"
 			],
 			[
 				"c",
 				"class\tclass …"
+			],
+			[
+				"th",
+				"this"
+			],
+			[
+				"p",
+				"public"
 			],
 			[
 				"v",
@@ -68,23 +76,23 @@
 	"buffers":
 	[
 		{
-			"file": "public/php/user/feedInit.php",
+			"file": "public/index.php",
 			"settings":
 			{
-				"buffer_size": 190,
+				"buffer_size": 130,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/php/class/init.php",
+			"settings":
+			{
+				"buffer_size": 1692,
 				"line_ending": "Unix"
 			},
 			"undo_stack":
 			[
-				[
-					3,
-					2,
-					"left_delete",
-					null,
-					"AgAAALwAAAAAAAAAvAAAAAAAAAAUAAAAICAkZmVlZC0+c3FsQ2xvc2UoKTu7AAAAAAAAALsAAAAAAAAAAQAAAAo",
-					"AQAAAAAAAAABAAAA0AAAAAAAAAC8AAAAAAAAAAAAAAAAAPC/"
-				]
 			]
 		}
 	],
@@ -134,25 +142,29 @@
 		"/home/oleh/Desktop/phpTwitter",
 		"/home/oleh/Desktop/phpTwitter/public",
 		"/home/oleh/Desktop/phpTwitter/public/php",
-		"/home/oleh/Desktop/phpTwitter/public/php/function",
-		"/home/oleh/Desktop/phpTwitter/public/php/user"
+		"/home/oleh/Desktop/phpTwitter/public/php/class"
 	],
 	"file_history":
 	[
 		"/home/oleh/Desktop/phpTwitter/public/php/class/init.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/class/feed.php",
-		"/home/oleh/Desktop/phpTwitter/public/php/class/interaction.php",
-		"/home/oleh/Desktop/phpTwitter/public/php/user/edit.php",
-		"/home/oleh/Desktop/phpTwitter/public/index.php",
-		"/home/oleh/Desktop/phpTwitter/public/php/user/delete.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/user/feedInit.php",
+		"/home/oleh/Desktop/phpTwitter/public/index.php",
+		"/home/oleh/Desktop/phpTwitter/public/php/class/preload.php",
+		"/home/oleh/Desktop/phpTwitter/public/php/class/interaction.php",
+		"/home/oleh/Desktop/phpTwitter/public/php/class/log.php",
+		"/home/oleh/Desktop/phpTwitter/public/php/user/delete.php",
+		"/home/oleh/Desktop/phpTwitter/public/php/user/edit.php",
+		"/home/oleh/Desktop/phpTwitter/public/php/class/sql.php",
+		"/home/oleh/Desktop/phpTwitter/public/html/nav.php",
+		"/home/oleh/Desktop/phpTwitter/public/html/profile.php",
+		"/home/oleh/Desktop/phpTwitter/public/html/index.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/function/getBio.php",
 		"/home/oleh/Desktop/phpTwitter/public/html/login/singup.php",
 		"/home/oleh/Desktop/phpTwitter/public/html/login/login.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/function/createPost.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/function/pullPost.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/function/isOwner.php",
-		"/home/oleh/Desktop/phpTwitter/public/php/class/log.php",
 		"/home/oleh/Desktop/phpTwitter/js/feed.js",
 		"/home/oleh/Desktop/phpTwitter/public/php/user/pullPost.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/user/theme.php",
@@ -171,10 +183,8 @@
 		"/home/oleh/Desktop/phpTwitter/public/php/user/interaction.php",
 		"/home/oleh/Desktop/phpTwitter/js/theme.js",
 		"/home/oleh/Desktop/phpTwitter/js/fileMeneger.js",
-		"/home/oleh/Desktop/phpTwitter/public/html/index.php",
 		"/home/oleh/Desktop/phpTwitter/public/html/postTemplate.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/delete.php",
-		"/home/oleh/Desktop/phpTwitter/public/html/profile.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/edit.php",
 		"/home/oleh/Desktop/phpTwitter/scss/container.scss",
 		"/home/oleh/Desktop/phpTwitter/public/html/createPost.html",
@@ -186,7 +196,6 @@
 		"/home/oleh/Desktop/phpTwitter/public/php/post.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/login/log.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/login/singup.php",
-		"/home/oleh/Desktop/phpTwitter/public/html/nav.php",
 		"/home/oleh/Desktop/phpTwitter/.gitignore",
 		"/home/oleh/Desktop/phpTwitter/public/css/container.css",
 		"/home/oleh/Desktop/phpTwitter/Dockerfile",
@@ -208,7 +217,7 @@
 	],
 	"find":
 	{
-		"height": 32.0
+		"height": 44.0
 	},
 	"find_in_files":
 	{
@@ -222,6 +231,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$user",
 			"theme",
 			"$test",
 			"userSettings",
@@ -256,20 +266,51 @@
 			[
 				{
 					"buffer": 0,
-					"file": "public/php/user/feedInit.php",
-					"selected": true,
+					"file": "public/index.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 190,
+						"buffer_size": 130,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								187,
-								187
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/php/class/init.php",
+					"selected": true,
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1692,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1151,
+								1151
 							]
 						],
 						"settings":
@@ -279,7 +320,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 483.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

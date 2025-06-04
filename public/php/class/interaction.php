@@ -1,5 +1,4 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/php/class/init.php";
 
 
 class interaction extends init {

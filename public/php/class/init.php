@@ -1,13 +1,7 @@
 <?php
 
-$files = glob($_SERVER['DOCUMENT_ROOT'] . "/php/function/*.php");
 
-foreach ($files as $file) {
-  require_once($file);
-}
-
-
-class Init {
+class init {
 
   use createPost, https, getBio, isOwner, pullPost;
 
@@ -20,8 +14,6 @@ class Init {
   protected $conn;
 
   public function __construct() {
-
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/php/class/sql.php";//connects to mysql via sql.php file
 
     session_start();
     $mySql = new sql("phptwitter-db-1", "root", "test", "phpmytwitter");
@@ -62,6 +54,15 @@ class Init {
 
   public function __destruct() {
     $this->conn->close();
+  }
+
+  public function index() {
+    if ($_SERVER['SERVER_NAME'] !== "localhost") {
+      $this->https();
+    }
+    ob_start();
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/html/index.php";
+    ob_end_flush();
   }
 
   public function jsInit() {

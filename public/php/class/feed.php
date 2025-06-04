@@ -1,9 +1,7 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'] . "/php/class/init.php";
 
-
-class Feed extends Init {
+class feed extends init {
 	private $many;
 	private $upd;
 	private $offset;
@@ -15,7 +13,6 @@ class Feed extends Init {
 
 	function __construct($amount, $offset, $order) {
 		parent::__construct();
-
 
 		$this->many 	= $amount;
 		$this->offset = $offset;
