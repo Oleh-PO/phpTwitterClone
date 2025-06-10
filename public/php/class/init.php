@@ -16,7 +16,7 @@ class init {
   public function __construct() {
 
     session_start();
-    $mySql = new sql("phptwitter-db-1", "root", "test", "phpmytwitter");
+    $mySql = new sql("phptwitter-db-1", "root", "12345678", "phpmytwitter");
     $this->conn = $mySql->sqlInit();
 
     if (isset($_SESSION['id'])) {//get data from session

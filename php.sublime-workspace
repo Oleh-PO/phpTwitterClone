@@ -76,24 +76,12 @@
 	"buffers":
 	[
 		{
-			"file": "public/index.php",
+			"file": "Dockerfile",
 			"settings":
 			{
-				"buffer_size": 130,
-				"encoding": "UTF-8",
+				"buffer_size": 72,
 				"line_ending": "Unix"
 			}
-		},
-		{
-			"file": "public/php/class/init.php",
-			"settings":
-			{
-				"buffer_size": 1692,
-				"line_ending": "Unix"
-			},
-			"undo_stack":
-			[
-			]
 		}
 	],
 	"build_system": "",
@@ -140,16 +128,15 @@
 	"expanded_folders":
 	[
 		"/home/oleh/Desktop/phpTwitter",
-		"/home/oleh/Desktop/phpTwitter/public",
-		"/home/oleh/Desktop/phpTwitter/public/php",
-		"/home/oleh/Desktop/phpTwitter/public/php/class"
+		"/home/oleh/Desktop/phpTwitter/public"
 	],
 	"file_history":
 	[
+		"/home/oleh/Desktop/phpTwitter/public/index.php",
+		"/home/oleh/Desktop/phpTwitter/compose.yaml",
 		"/home/oleh/Desktop/phpTwitter/public/php/class/init.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/class/feed.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/user/feedInit.php",
-		"/home/oleh/Desktop/phpTwitter/public/index.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/class/preload.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/class/interaction.php",
 		"/home/oleh/Desktop/phpTwitter/public/php/class/log.php",
@@ -199,7 +186,6 @@
 		"/home/oleh/Desktop/phpTwitter/.gitignore",
 		"/home/oleh/Desktop/phpTwitter/public/css/container.css",
 		"/home/oleh/Desktop/phpTwitter/Dockerfile",
-		"/home/oleh/Desktop/phpTwitter/compose.yaml",
 		"/home/oleh/Desktop/phpTwitter/scss/init.scss",
 		"/home/oleh/Desktop/phpTwitter/scss/form.scss",
 		"/home/oleh/Desktop/phpTwitter/.dockerignore",
@@ -217,7 +203,7 @@
 	],
 	"find":
 	{
-		"height": 44.0
+		"height": 32.0
 	},
 	"find_in_files":
 	{
@@ -266,11 +252,12 @@
 			[
 				{
 					"buffer": 0,
-					"file": "public/index.php",
-					"semi_transient": false,
+					"file": "Dockerfile",
+					"selected": true,
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 130,
+						"buffer_size": 72,
 						"regions":
 						{
 						},
@@ -283,44 +270,10 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Dockerfile Syntax Highlighting/Syntaxes/Dockerfile.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"stack_multiselect": false,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "public/php/class/init.php",
-					"selected": true,
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1692,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1151,
-								1151
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 483.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

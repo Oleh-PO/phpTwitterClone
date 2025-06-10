@@ -5,7 +5,7 @@ services:
     ports:
       - 8080:80
     environment:
-      - DB_PASSWORD=test
+      - DB_PASSWORD=12345678
       - DB_HOST=db
       - DB_NAME=phpmytwitter
       - DB_USER=root
@@ -23,7 +23,7 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_ROOT_PASSWORD=12345678
       - MYSQL_DATABASE=phpmytwitter
     expose:
       - 3306
