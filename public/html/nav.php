@@ -5,7 +5,7 @@
 			<a href="/html/login/login.php"><button>LOG IN</button></a>
 		<?php else: ?>
 			<a class="userNav" href=<?php echo "/?user=$this->userId"?> >
-				<h4><?php echo $user->userName; ?></h4>
+				<h4><?php echo $this->userName; ?></h4>
 				<img src="https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg">
 			</a>
 		<?php endif; ?>

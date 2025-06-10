@@ -11,7 +11,7 @@ class log extends init {
 
   public $passwordError = false;
   public $loginError    = false;
-  public $confirmError  = true;
+  public $confirmError  = false;
 
 
   private $errorMessage = array(
@@ -99,7 +99,6 @@ class log extends init {
           $_SESSION["username"] = $result["login"];//start session
 
           header("Location: /");
-          exit();
         }
         $this->error = "passwordIncorrect";
         $this->passwordError = true;
@@ -138,12 +137,10 @@ class log extends init {
           $_SESSION["username"] = $this->login;//start session
 
           header("Location:/");
-          exit();
         } else {
           echo("error");
         }
       }
     }
-    $this->conn->close();
   }
 }

@@ -1,6 +1,7 @@
 <?php 
-	require $_SERVER['DOCUMENT_ROOT'] . "/php/class/log.php";
-	$log = new Log;
+	require $_SERVER['DOCUMENT_ROOT'] . "/php/class/preload.php";
+	$load = new preload;
+	$log = new log;
 	$log->logIn();
 ?>
 
